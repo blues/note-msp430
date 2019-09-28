@@ -3,8 +3,8 @@
 This is an example of how to use the Notecard and the [note-c][note-c] library
 with the native TI MSP430 SDK.
 
-The board that I used for testing is the [board]TI LaunchPad[board] kit with MSP430 MCU, part number
-[board]MSP-EXP430FR2355[board] which was selected because of its minimalism and the fact that it has
+The board that I used for testing is the [TI LaunchPad][board] kit with MSP430 MCU, part number
+[MSP-EXP430FR2355][board] which was selected because of its minimalism and the fact that it has
 an integrated debug probe.
 
 As a proof-of-concept, this example implements the same functions as the
@@ -28,7 +28,7 @@ header wires to jumper between the boards.
 ## Installation of the TI Development Environment
 
 In order to do development, it may be the case that all you need to do is to install the MSP430 SDK as above,
-and to install the TI Code Composer Studio (CCS) available [ccs]here[ccs] with a free license:
+and to install the TI Code Composer Studio (CCS) available [here][ccs] with a free license:
 
 During installation, to optimize disk space, select to only install support for the MSP-EXP430FR2355.
 
