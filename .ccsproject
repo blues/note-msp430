@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?ccsproject version="1.0"?>
+<projectOptions>
+	<ccsVersion value="9.1.0"/>
+	<deviceVariant value="MSP430FR2355"/>
+	<deviceFamily value="MSP430"/>
+	<deviceEndianness value="little"/>
+	<codegenToolVersion value="19.6.0.STS"/>
+	<isElfFormat value="true"/>
+	<linkerCommandFile value="lnk_msp430fr2355.cmd"/>
+	<rts value="libc.a"/>
+	<createSlaveProjects value=""/>
+	<templateProperties value="id=note-msp430.projectspec.note-msp430"/>
+	<origin value="C:\ti\msp430ware_3_80_07_00\examples\boards\MSP-EXP430FR2355\MSP-EXP430FR2355_Software_Examples\Firmware\Source\note-msp430\CCS\note-msp430.projectspec"/>
+	<filesToOpen value="main.c"/>
+	<connection value="common/targetdb/connections/TIMSP430-USB.xml"/>
+	<isTargetManual value="false"/>
+</projectOptions>
