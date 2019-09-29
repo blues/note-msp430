@@ -56,7 +56,7 @@ CCS projects folder
   ├ note-c  
 ```
 
-In CCS, open the note-msp430 project.  Make sure that you edit the "my" definitions at the top of main.c
+In CCS, open the note-msp430 project.  Make sure that you edit the "my" definitions at the top of example.c
 so that this example will send data to your notehub.io project, and so that it uses serial or I2C as you wish.
 By using the standard Debug build configuration, you should be able to build and run the project.
 
