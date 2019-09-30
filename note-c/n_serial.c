@@ -17,7 +17,7 @@ const char *serialNoteTransaction(char *json, char **jsonResponse) {
         segLeft -= segLen;
         _SerialTransmit((uint8_t *)&json[segOff], segLen, false);
         if (segLeft == 0) {
-          _SerialTransmit("\n", 1, true);
+			_SerialTransmit((uint8_t *)"\n", 1, true);
             break;
         }
         segOff += segLen;
@@ -99,12 +99,7 @@ const char *serialNoteTransaction(char *json, char **jsonResponse) {
 bool serialNoteReset() {
 
     // Initialize, or re-initialize.  Because we've observed Arduino serial driver flakiness,
-    // close the Arduino HardwareSerial port in order to re-initialize it.
-    static bool first = true;
-    if (first)
-        first = false;
-    else
-        _DelayMs(500);
+    _DelayMs(250);
     _SerialReset();
 
     // The guaranteed behavior for robust resyncing is to send two newlines
