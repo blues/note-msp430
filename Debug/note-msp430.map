@@ -1,10 +1,10 @@
 ******************************************************************************
                   MSP430 Linker PC v19.6.0                     
 ******************************************************************************
->> Linked Sat Sep 28 14:20:15 2019
+>> Linked Tue Oct  8 12:02:06 2019
 
 OUTPUT FILE NAME:   <note-msp430.out>
-ENTRY POINT SYMBOL: "_c_int00_noargs_mpu"  address: 0000e7d6
+ENTRY POINT SYMBOL: "_c_int00_noargs_mpu"  address: 0000d82c
 
 
 MEMORY CONFIGURATION
@@ -16,8 +16,8 @@ MEMORY CONFIGURATION
   INFO                  00001800   00000200  00000000  00000200  RWIX
   TLVMEM                00001a00   00000200  00000000  00000200  RWIX
   BOOTCODE              00001c00   00000400  00000000  00000400  RWIX
-  RAM                   00002000   00001000  0000037a  00000c86  RWIX
-  FRAM                  00008000   00007f80  00006814  0000176c  RWIX
+  RAM                   00002000   00001000  00000341  00000cbf  RWIX
+  FRAM                  00008000   00007f80  0000586a  00002716  RWIX
   JTAGSIGNATURE         0000ff80   00000004  00000004  00000000  RWIX  ffff 
   BSLSIGNATURE          0000ff84   00000004  00000004  00000000  RWIX  ffff 
   BSLCONFIGURATIONSIGNA 0000ff88   00000002  00000002  00000000  RWIX  ffff 
@@ -88,227 +88,216 @@ section   page    origin      length       input sections
                   00008000    00000008     rts430x_lc_ld_eabi.lib : memory.c.obj (.sysmem) [fill = 0]
                   00008008    00000ff8     --HOLE-- [fill = 0]
 
-.cinit     0    00009000    000000fc     
-                  00009000    000000d8     (.cinit..data.load) [load image]
-                  000090da    0000000c     (__TI_handler_table)
-                  000090e6    00000006     (.cinit..bss.load) [load image, compression = zero_init]
-                  000090ec    00000010     (__TI_cinit_table)
+.cinit     0    00009000    000000c4     
+                  00009000    0000009f     (.cinit..data.load) [load image]
+                  000090a1    00000001     --HOLE-- [fill = 0]
+                  000090a2    0000000c     (__TI_handler_table)
+                  000090ae    00000006     (.cinit..bss.load) [load image, compression = zero_init]
+                  000090b4    00000010     (__TI_cinit_table)
 
-.pinit     0    000090fc    00000000     UNINITIALIZED
+.pinit     0    000090c4    00000000     UNINITIALIZED
 
-.binit     0    000090fc    00000000     
+.binit     0    000090c4    00000000     
 
 .init_array 
-*          0    000090fc    00000000     UNINITIALIZED
+*          0    000090c4    00000000     UNINITIALIZED
 
 .mspabi.exidx 
-*          0    000090fc    00000000     UNINITIALIZED
+*          0    000090c4    00000000     UNINITIALIZED
 
 .mspabi.extab 
-*          0    000090fc    00000000     UNINITIALIZED
+*          0    000090c4    00000000     UNINITIALIZED
 
-.const     0    000090fc    000004e4     
-                  000090fc    000001b0     n_serial.obj (.const:.string)
-                  000092ac    00000101     rts430x_lc_ld_eabi.lib : ctype.c.obj (.const:.string:_ctypes_)
-                  000093ad    00000001     --HOLE-- [fill = 0]
-                  000093ae    000000a6     example.obj (.const:.string)
-                  00009454    0000007e     n_request.obj (.const:.string)
-                  000094d2    00000058     n_ftoa.obj (.const:rounders)
-                  0000952a    0000002a     n_hooks.obj (.const:.string)
-                  00009554    00000020     n_cjson.obj (.const:.string)
-                  00009574    0000001c     n_cjson.obj (.const:$P$T0$1)
-                  00009590    0000001c     gpio.obj (.const:GPIO_PORT_TO_BASE)
-                  000095ac    00000014     rts430x_lc_ld_eabi.lib : _printfi_min.c.obj (.const:.string)
-                  000095c0    00000010     main.obj (.const:$P$T1$2)
-                  000095d0    0000000e     main.obj (.const:$P$T0$1)
-                  000095de    00000002     n_atof.obj (.const)
+.const     0    000090c4    0000030a     
+                  000090c4    00000101     rts430x_lc_ld_eabi.lib : ctype.c.obj (.const:.string:_ctypes_)
+                  000091c5    00000001     --HOLE-- [fill = 0]
+                  000091c6    000000a6     example.obj (.const:.string)
+                  0000926c    00000062     n_serial.obj (.const:.string)
+                  000092ce    0000003e     n_request.obj (.const:.string)
+                  0000930c    0000002c     n_ftoa.obj (.const:rounders)
+                  00009338    0000002a     n_hooks.obj (.const:.string)
+                  00009362    00000020     n_cjson.obj (.const:.string)
+                  00009382    0000001c     gpio.obj (.const:GPIO_PORT_TO_BASE)
+                  0000939e    00000010     n_cjson.obj (.const:$P$T0$1)
+                  000093ae    00000010     main.obj (.const:$P$T1$2)
+                  000093be    0000000e     main.obj (.const:$P$T0$1)
+                  000093cc    00000002     n_atof.obj (.const)
 
-.text      0    000095e0    000050be     
-                  000095e0    00000466     rts430x_lc_ld_eabi.lib : frcdivd.c.obj (.text:__TI_frcdivd)
-                  00009a46    0000038a     n_ftoa.obj (.text:JNtoA)
-                  00009dd0    00000304     n_atof.obj (.text:JAtoN)
-                  0000a0d4    000002e0     rts430x_lc_ld_eabi.lib : addd.c.obj (.text:__mspabi_addd)
-                  0000a3b4    00000296     n_cjson.obj (.text:parse_string)
-                  0000a64a    00000280     rts430x_lc_ld_eabi.lib : frcmpyd.c.obj (.text:__TI_frcmpyd)
-                  0000a8ca    00000266                            : mpyd.c.obj (.text:__mspabi_mpyd)
-                  0000ab30    00000248                            : frcaddd.c.obj (.text:__TI_frcaddd)
-                  0000ad78    00000232     n_serial.obj (.text:serialNoteTransaction)
-                  0000afaa    00000222     rts430x_lc_ld_eabi.lib : divd.c.obj (.text:__mspabi_divd)
-                  0000b1cc    000001fc     n_cjson.obj (.text:print_object)
-                  0000b3c8    000001d8     n_cjson.obj (.text:parse_value)
-                  0000b5a0    000001c0     n_cjson.obj (.text:print_string_ptr)
-                  0000b760    000001b4     n_cjson.obj (.text:parse_object)
-                  0000b914    00000190     rts430x_lc_ld_eabi.lib : memory.c.obj (.text:aligned_alloc)
-                  0000baa4    00000186     n_cjson.obj (.text:parse_number)
-                  0000bc2a    0000017c     rts430x_lc_ld_eabi.lib : _printfi_min.c.obj (.text:_setfield)
-                  0000bda6    0000014a     n_cjson.obj (.text:JParseWithOpts)
-                  0000bef0    0000014a     n_cjson.obj (.text:parse_array)
-                  0000c03a    00000148     n_cjson.obj (.text:print_number)
-                  0000c182    00000144     n_cjson.obj (.text:utf16_literal_to_utf8)
-                  0000c2c6    0000013c     rts430x_lc_ld_eabi.lib : memory.c.obj (.text:free)
-                  0000c402    00000138     example.obj (.text:loop)
-                  0000c53a    00000136     n_cjson.obj (.text:ensure)
-                  0000c670    0000011e     n_cjson.obj (.text:print)
-                  0000c78e    000000fc     n_cjson.obj (.text:print_value)
-                  0000c88a    000000f2     n_request.obj (.text:NoteTransaction)
-                  0000c97c    000000e4     rts430x_lc_ld_eabi.lib : _printfi_min.c.obj (.text:__TI_printfi_minimal)
-                  0000ca60    000000e4     n_cjson.obj (.text:parse_hex4)
-                  0000cb44    000000da     rts430x_lc_ld_eabi.lib : _printfi_min.c.obj (.text:_pproc_diouxp)
-                  0000cc1e    000000da     n_cjson.obj (.text:print_array)
-                  0000ccf8    000000d8     rts430x_lc_ld_eabi.lib : cmpd.c.obj (.text:__mspabi_cmpd)
-                  0000cdd0    000000cc     n_serial.obj (.text:serialNoteReset)
-                  0000ce9c    000000ba     rts430x_lc_ld_eabi.lib : memory.c.obj (.text:split)
-                  0000cf56    000000b2                            : renormd.c.obj (.text:__TI_renormd)
-                  0000d008    000000b2     main.obj (.text:init_CS)
-                  0000d0ba    0000009e     rts430x_lc_ld_eabi.lib : fltlid.c.obj (.text:__mspabi_fltlid)
-                  0000d158    0000009a     eusci_a_uart.obj (.text:EUSCI_A_UART_init)
-                  0000d1f2    00000094     main.obj (.text:noteSerialReset)
-                  0000d286    0000008c     n_cjson.obj (.text:JCreateNumber)
-                  0000d312    00000080     rts430x_lc_ld_eabi.lib : fltuld.c.obj (.text:__mspabi_fltuld)
-                  0000d392    0000007c     timer_b.obj (.text:Timer_B_initUpMode)
-                  0000d40e    00000078     rts430x_lc_ld_eabi.lib : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit_hold_wdt:__TI_auto_init_nobinit_nopinit_hold_wdt)
-                  0000d486    00000078     n_cjson.obj (.text:add_item_to_object)
-                  0000d4fe    00000076     rts430x_lc_ld_eabi.lib : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
-                  0000d574    00000072     gpio.obj (.text:GPIO_setAsPeripheralModuleFunctionInputPin)
-                  0000d5e6    00000072     gpio.obj (.text:GPIO_setAsPeripheralModuleFunctionOutputPin)
-                  0000d658    0000006e     rts430x_lc_ld_eabi.lib : vsnprintf.c.obj (.text:vsnprintf)
-                  0000d6c6    0000006c                            : vsnprintf.c.obj (.text:_outs)
-                  0000d732    00000068     n_cjson.obj (.text:skip_utf8_bom)
-                  0000d79a    00000066     rts430x_lc_ld_eabi.lib : fixdli.c.obj (.text:__mspabi_fixdli)
-                  0000d800    00000066     main.obj (.text:init_GPIO)
-                  0000d866    00000062     n_cjson.obj (.text:JDelete)
-                  0000d8c8    00000058     n_cjson.obj (.text:buffer_skip_whitespace)
-                  0000d920    00000058     rts430x_lc_ld_eabi.lib : div32u.asm.obj (.text)
-                  0000d978    00000052     n_cjson.obj (.text:case_insensitive_strcmp)
-                  0000d9ca    0000004a     n_cjson_helpers.obj (.text:JGetNumber)
-                  0000da14    00000048     rts430x_lc_ld_eabi.lib : _printfi_min.c.obj (.text:_pproc_str)
-                  0000da5c    00000048     n_cjson.obj (.text:get_object_item)
-                  0000daa4    00000046     n_cjson.obj (.text:JAddNumberToObject)
-                  0000daea    00000046     rts430x_lc_ld_eabi.lib : memory.c.obj (.text:free_list_insert)
-                  0000db30    00000042     n_cjson_helpers.obj (.text:JIsNullString)
-                  0000db72    00000040     rts430x_lc_ld_eabi.lib : div32s.asm.obj (.text)
-                  0000dbb2    0000003e     n_cjson.obj (.text:JCreateString)
-                  0000dbf0    0000003e     n_hooks.obj (.text:NoteFnDebug)
-                  0000dc2e    0000003e     rts430x_lc_ld_eabi.lib : asr32.asm.obj (.text:l_asr_const)
-                  0000dc6c    0000003e                            : lsl32.asm.obj (.text:l_lsl_const)
-                  0000dcaa    0000003e                            : lsr32.asm.obj (.text:l_lsr_const)
-                  0000dce8    0000003e     main.obj (.text:noteSerialReceive)
-                  0000dd26    0000003c     n_request.obj (.text:NoteRequest)
-                  0000dd62    0000003c     FRWP_INIT_LIB_CCS_msp430_large_code_large_data.lib : frwp_init.obj (.text:__mpu_init)
-                  0000dd9e    0000003c     main.obj (.text:main)
-                  0000ddda    0000003c     rts430x_lc_ld_eabi.lib : memcpy.c.obj (.text:memcpy)
-                  0000de16    0000003a     n_cjson.obj (.text:Jstrdup)
-                  0000de50    0000003a     n_cjson.obj (.text:htoa16)
-                  0000de8a    00000038     n_cjson.obj (.text:JAddBoolToObject)
-                  0000dec2    00000038     n_cjson.obj (.text:JAddStringToObject)
-                  0000defa    00000038     rts430x_lc_ld_eabi.lib : strncmp.c.obj (.text:strncmp)
-                  0000df32    00000036     n_request.obj (.text:errDoc)
-                  0000df68    00000036     main.obj (.text:noteSerialTransmit)
-                  0000df9e    00000034     gpio.obj (.text:GPIO_setAsOutputPin)
-                  0000dfd2    00000032     eusci_b_i2c.obj (.text:EUSCI_B_I2C_masterSendMultiByteFinish)
-                  0000e004    00000032     rts430x_lc_ld_eabi.lib : subd.c.obj (.text:__mspabi_subd)
-                  0000e036    00000030     example.obj (.text:setup)
-                  0000e066    0000002e     rts430x_lc_ld_eabi.lib : negd.c.obj (.text:__mspabi_negd)
-                  0000e094    0000002e                            : vsnprintf.c.obj (.text:_outc)
-                  0000e0c2    0000002e     n_cjson.obj (.text:add_item_to_array)
-                  0000e0f0    0000002c     n_request.obj (.text:NoteRequestResponse)
-                  0000e11c    0000002a     main.obj (.text:delay)
-                  0000e146    0000002a     rts430x_lc_ld_eabi.lib : memory.c.obj (.text:free_list_remove)
-                  0000e170    00000028     n_hooks.obj (.text:NoteSetFnSerial)
-                  0000e198    00000028     rts430x_lc_ld_eabi.lib : fixdi.c.obj (.text:__mspabi_fixdi)
-                  0000e1c0    00000028     n_cjson.obj (.text:update_offset)
-                  0000e1e8    00000024     n_cjson.obj (.text:JNew_Item)
-                  0000e20c    00000024     rts430x_lc_ld_eabi.lib : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init_nomemset:__TI_zero_init_nomemset)
-                  0000e230    00000024                            : mult32_f5hw.asm.obj (.text)
-                  0000e254    00000022     eusci_a_uart.obj (.text:EUSCI_A_UART_enableInterrupt)
-                  0000e276    00000022     eusci_a_uart.obj (.text:EUSCI_A_UART_transmitData)
-                  0000e298    00000022     eusci_b_i2c.obj (.text:EUSCI_B_I2C_masterSendMultiByteNext)
-                  0000e2ba    00000022     n_cjson.obj (.text:JCreateBool)
-                  0000e2dc    00000020     rts430x_lc_ld_eabi.lib : memset.c.obj (.text:memset)
-                  0000e2fc    0000001e     n_hooks.obj (.text:NoteFnSerialAvailable)
-                  0000e31a    0000001e     n_hooks.obj (.text:NoteFnSerialReceive)
-                  0000e338    0000001e     n_request.obj (.text:NoteNewRequest)
-                  0000e356    0000001e     rts430x_lc_ld_eabi.lib : memccpy.c.obj (.text:memccpy)
-                  0000e374    0000001c     gpio.obj (.text:GPIO_setOutputLowOnPin)
-                  0000e390    0000001c     n_cjson.obj (.text:JIsString)
-                  0000e3ac    0000001c     rts430x_lc_ld_eabi.lib : strchr.c.obj (.text:strchr)
-                  0000e3c8    0000001c                            : strcmp.c.obj (.text:strcmp)
-                  0000e3e4    0000001a     n_cjson.obj (.text:JIsNumber)
-                  0000e3fe    0000001a     n_hooks.obj (.text:NoteFnSerialReset)
-                  0000e418    0000001a     n_hooks.obj (.text:NoteFnSerialTransmit)
-                  0000e432    0000001a     n_request.obj (.text:NoteReset)
-                  0000e44c    00000018     rts430x_lc_ld_eabi.lib : mult16_f5hw.asm.obj (.text)
-                  0000e464    00000016     wdt_a.obj (.text:WDT_A_hold)
-                  0000e47a    00000016     rts430x_lc_ld_eabi.lib : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
-                  0000e490    00000016                            : memory.c.obj (.text:heap_start)
-                  0000e4a6    00000016     main.obj (.text:noteSerialAvailable)
-                  0000e4bc    00000016     rts430x_lc_ld_eabi.lib : div16u.asm.obj (.text)
-                  0000e4d2    00000014     n_cjson.obj (.text:JCreateObject)
-                  0000e4e6    00000014     n_hooks.obj (.text:NoteFnGetMs)
-                  0000e4fa    00000014     n_hooks.obj (.text:NoteFnTransaction)
-                  0000e50e    00000012     n_cjson.obj (.text:JAddItemToObject)
-                  0000e520    00000012     n_hooks.obj (.text:NoteFnMalloc)
-                  0000e532    00000012     n_hooks.obj (.text:NoteFnNoteReset)
-                  0000e544    00000012     n_hooks.obj (.text:NoteSetFn)
-                  0000e556    00000012     rts430x_lc_ld_eabi.lib : strcpy.c.obj (.text:strcpy)
-                  0000e568    00000012                            : strlen.c.obj (.text:strlen)
-                  0000e57a    00000012                            : tolower.c.obj (.text:tolower)
-                  0000e58c    00000010                            : asr32.asm.obj (.text:l_asr)
-                  0000e59c    00000010                            : lsl32.asm.obj (.text:l_lsl)
-                  0000e5ac    00000010                            : lsr32.asm.obj (.text:l_lsr)
-                  0000e5bc    0000000e     eusci_a_uart.obj (.text:EUSCI_A_UART_clearInterrupt)
-                  0000e5ca    0000000e     n_hooks.obj (.text:NoteFnDelayMs)
-                  0000e5d8    0000000e     n_hooks.obj (.text:NoteFnFree)
-                  0000e5e6    0000000e     n_hooks.obj (.text:NoteFnLockNote)
-                  0000e5f4    0000000e     n_hooks.obj (.text:NoteFnUnlockNote)
-                  0000e602    0000000c     n_cjson.obj (.text:JPrintUnformatted)
-                  0000e60e    0000000c     rts430x_lc_ld_eabi.lib : memory.c.obj (.text:malloc)
-                  0000e61a    0000000a     eusci_a_uart.obj (.text:EUSCI_A_UART_queryStatusFlags)
-                  0000e624    0000000a     eusci_b_i2c.obj (.text:EUSCI_B_I2C_masterReceiveMultiByteNext)
-                  0000e62e    0000000a     n_cjson.obj (.text:JParse)
-                  0000e638    0000000a     main.obj (.text:millis)
-                  0000e642    0000000a     n_cjson.obj (.text:print_string)
-                  0000e64c    0000000a     n_cjson.obj (.text:suffix_object)
-                  0000e656    00000008     n_cjson.obj (.text:JGetObjectItem)
-                  0000e65e    00000006     eusci_a_uart.obj (.text:EUSCI_A_UART_enable)
-                  0000e664    00000006     eusci_b_i2c.obj (.text:EUSCI_B_I2C_masterReceiveMultiByteStop)
-                  0000e66a    00000006     n_cjson.obj (.text:JFree)
-                  0000e670    00000006     pmm.obj (.text:PMM_unlockLPM5)
-                  0000e676    00000006     timer_b.obj (.text:Timer_B_clearTimerInterrupt)
-                  0000e67c    00000006     timer_b.obj (.text:Timer_B_startCounter)
-                  0000e682    00000006     rts430x_lc_ld_eabi.lib : fltud.c.obj (.text:__mspabi_fltud)
-                  0000e688    00000006                            : exit.c.obj (.text:abort)
-                  0000e68e    00000006     n_cjson.obj (.text:get_decimal_point)
-                  0000e694    00000004     rts430x_lc_ld_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
-                  0000e698    00000002                            : _lock.c.obj (.text:_nop)
-                  0000e69a    00000002                            : startup.c.obj (.text:_system_post_cinit)
-                  0000e69c    00000002     n_cjson.obj (.text:cast_away_const)
+.text      0    000093ce    00004326     
+                  000093ce    000002e0     rts430x_lc_ld_eabi.lib : addd.c.obj (.text:__mspabi_addd)
+                  000096ae    000002be     n_ftoa.obj (.text:JNtoA)
+                  0000996c    00000298     n_atof.obj (.text:JAtoN)
+                  00009c04    0000028e     n_cjson.obj (.text:parse_string)
+                  00009e92    00000280     rts430x_lc_ld_eabi.lib : frcmpyd.c.obj (.text:__TI_frcmpyd)
+                  0000a112    00000266                            : mpyd.c.obj (.text:__mspabi_mpyd)
+                  0000a378    00000248                            : frcaddd.c.obj (.text:__TI_frcaddd)
+                  0000a5c0    000001fc     n_cjson.obj (.text:print_object)
+                  0000a7bc    000001d8     n_cjson.obj (.text:parse_value)
+                  0000a994    000001c0     n_cjson.obj (.text:print_string_ptr)
+                  0000ab54    000001ae     n_cjson.obj (.text:parse_object)
+                  0000ad02    000001aa     n_serial.obj (.text:serialNoteTransaction)
+                  0000aeac    00000190     rts430x_lc_ld_eabi.lib : memory.c.obj (.text:aligned_alloc)
+                  0000b03c    00000152     n_cjson.obj (.text:parse_number)
+                  0000b18e    00000144     n_cjson.obj (.text:parse_array)
+                  0000b2d2    00000144     n_cjson.obj (.text:utf16_literal_to_utf8)
+                  0000b416    0000013c     rts430x_lc_ld_eabi.lib : memory.c.obj (.text:free)
+                  0000b552    00000132     n_cjson.obj (.text:JParseWithOpts)
+                  0000b684    00000132     rts430x_lc_ld_eabi.lib : fs_add.asm.obj (.text)
+                  0000b7b6    00000108     n_cjson.obj (.text:print_number)
+                  0000b8be    000000fc     n_cjson.obj (.text:print_value)
+                  0000b9ba    000000f2     n_cjson.obj (.text:ensure)
+                  0000baac    000000e4     n_cjson.obj (.text:parse_hex4)
+                  0000bb90    000000da     n_cjson.obj (.text:print_array)
+                  0000bc6a    000000d8     n_cjson.obj (.text:print)
+                  0000bd42    000000d6     example.obj (.text:loop)
+                  0000be18    000000ba     rts430x_lc_ld_eabi.lib : memory.c.obj (.text:split)
+                  0000bed2    000000b8                            : fs_mpy.asm.obj (.text)
+                  0000bf8a    000000b2                            : renormd.c.obj (.text:__TI_renormd)
+                  0000c03c    000000b2     main.obj (.text:init_CS)
+                  0000c0ee    000000a0     n_request.obj (.text:NoteTransaction)
+                  0000c18e    0000009e     rts430x_lc_ld_eabi.lib : fltlid.c.obj (.text:__mspabi_fltlid)
+                  0000c22c    0000009a     eusci_a_uart.obj (.text:EUSCI_A_UART_init)
+                  0000c2c6    00000094     main.obj (.text:noteSerialReset)
+                  0000c35a    00000094     n_serial.obj (.text:serialNoteReset)
+                  0000c3ee    00000090     rts430x_lc_ld_eabi.lib : fs_div.asm.obj (.text)
+                  0000c47e    0000008c                            : cvtdf.c.obj (.text:__mspabi_cvtdf)
+                  0000c50a    0000007e                            : fs_tol.asm.obj (.text)
+                  0000c588    0000007c     timer_b.obj (.text:Timer_B_initUpMode)
+                  0000c604    00000078     rts430x_lc_ld_eabi.lib : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit_hold_wdt:__TI_auto_init_nobinit_nopinit_hold_wdt)
+                  0000c67c    00000076                            : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
+                  0000c6f2    00000072     gpio.obj (.text:GPIO_setAsPeripheralModuleFunctionInputPin)
+                  0000c764    00000072     gpio.obj (.text:GPIO_setAsPeripheralModuleFunctionOutputPin)
+                  0000c7d6    0000006e     n_cjson.obj (.text:add_item_to_object)
+                  0000c844    00000068     rts430x_lc_ld_eabi.lib : fs_toi.asm.obj (.text)
+                  0000c8ac    00000068     n_cjson.obj (.text:skip_utf8_bom)
+                  0000c914    00000066     main.obj (.text:init_GPIO)
+                  0000c97a    00000062     n_cjson.obj (.text:JDelete)
+                  0000c9dc    00000060     n_cjson.obj (.text:JCreateNumber)
+                  0000ca3c    00000058     n_cjson.obj (.text:buffer_skip_whitespace)
+                  0000ca94    00000058     rts430x_lc_ld_eabi.lib : div32u.asm.obj (.text)
+                  0000caec    00000052     n_cjson.obj (.text:case_insensitive_strcmp)
+                  0000cb3e    0000004a     rts430x_lc_ld_eabi.lib : fs_cmp.asm.obj (.text)
+                  0000cb88    0000004a                            : fs_ltof.asm.obj (.text)
+                  0000cbd2    00000048     n_cjson.obj (.text:get_object_item)
+                  0000cc1a    00000046     rts430x_lc_ld_eabi.lib : memory.c.obj (.text:free_list_insert)
+                  0000cc60    00000042     n_cjson_helpers.obj (.text:JIsNullString)
+                  0000cca2    00000040     rts430x_lc_ld_eabi.lib : div32s.asm.obj (.text)
+                  0000cce2    0000003e                            : asr32.asm.obj (.text:l_asr_const)
+                  0000cd20    0000003e                            : lsl32.asm.obj (.text:l_lsl_const)
+                  0000cd5e    0000003e                            : lsr32.asm.obj (.text:l_lsr_const)
+                  0000cd9c    0000003e     main.obj (.text:noteSerialReceive)
+                  0000cdda    0000003c     n_request.obj (.text:NoteRequest)
+                  0000ce16    0000003c     FRWP_INIT_LIB_CCS_msp430_large_code_large_data.lib : frwp_init.obj (.text:__mpu_init)
+                  0000ce52    0000003c     main.obj (.text:main)
+                  0000ce8e    0000003c     rts430x_lc_ld_eabi.lib : memcpy.c.obj (.text:memcpy)
+                  0000ceca    0000003a     n_cjson.obj (.text:Jstrdup)
+                  0000cf04    0000003a     n_cjson.obj (.text:htoa16)
+                  0000cf3e    00000038     rts430x_lc_ld_eabi.lib : strncmp.c.obj (.text:strncmp)
+                  0000cf76    00000036     n_cjson.obj (.text:JCreateString)
+                  0000cfac    00000036     n_cjson_helpers.obj (.text:JGetNumber)
+                  0000cfe2    00000036     main.obj (.text:noteSerialTransmit)
+                  0000d018    00000034     gpio.obj (.text:GPIO_setAsOutputPin)
+                  0000d04c    00000032     eusci_b_i2c.obj (.text:EUSCI_B_I2C_masterSendMultiByteFinish)
+                  0000d07e    00000030     n_cjson.obj (.text:JAddNumberToObject)
+                  0000d0ae    00000030     example.obj (.text:setup)
+                  0000d0de    0000002e     n_cjson.obj (.text:JAddBoolToObject)
+                  0000d10c    0000002e     n_cjson.obj (.text:JAddStringToObject)
+                  0000d13a    0000002e     n_cjson.obj (.text:add_item_to_array)
+                  0000d168    0000002c     n_request.obj (.text:NoteRequestResponse)
+                  0000d194    0000002a     main.obj (.text:delay)
+                  0000d1be    0000002a     rts430x_lc_ld_eabi.lib : memory.c.obj (.text:free_list_remove)
+                  0000d1e8    00000028     n_hooks.obj (.text:NoteSetFnSerial)
+                  0000d210    00000028     n_cjson.obj (.text:update_offset)
+                  0000d238    00000024     n_cjson.obj (.text:JNew_Item)
+                  0000d25c    00000024     n_request.obj (.text:NoteReset)
+                  0000d280    00000024     rts430x_lc_ld_eabi.lib : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init_nomemset:__TI_zero_init_nomemset)
+                  0000d2a4    00000024                            : fs_utof.asm.obj (.text)
+                  0000d2c8    00000024                            : mult32_f5hw.asm.obj (.text)
+                  0000d2ec    00000022     eusci_a_uart.obj (.text:EUSCI_A_UART_enableInterrupt)
+                  0000d30e    00000022     eusci_a_uart.obj (.text:EUSCI_A_UART_transmitData)
+                  0000d330    00000022     eusci_b_i2c.obj (.text:EUSCI_B_I2C_masterSendMultiByteNext)
+                  0000d352    00000020     rts430x_lc_ld_eabi.lib : memset.c.obj (.text:memset)
+                  0000d372    0000001e     n_cjson.obj (.text:JCreateBool)
+                  0000d390    0000001e     n_hooks.obj (.text:NoteFnSerialAvailable)
+                  0000d3ae    0000001e     n_hooks.obj (.text:NoteFnSerialReceive)
+                  0000d3cc    0000001e     n_request.obj (.text:NoteNewRequest)
+                  0000d3ea    0000001e     n_request.obj (.text:errDoc)
+                  0000d408    0000001c     gpio.obj (.text:GPIO_setOutputLowOnPin)
+                  0000d424    0000001c     n_cjson.obj (.text:JIsString)
+                  0000d440    0000001c     rts430x_lc_ld_eabi.lib : strchr.c.obj (.text:strchr)
+                  0000d45c    0000001c                            : strcmp.c.obj (.text:strcmp)
+                  0000d478    0000001a     n_cjson.obj (.text:JIsNumber)
+                  0000d492    0000001a     n_hooks.obj (.text:NoteFnSerialReset)
+                  0000d4ac    0000001a     n_hooks.obj (.text:NoteFnSerialTransmit)
+                  0000d4c6    00000018     rts430x_lc_ld_eabi.lib : mult16_f5hw.asm.obj (.text)
+                  0000d4de    00000016     wdt_a.obj (.text:WDT_A_hold)
+                  0000d4f4    00000016     rts430x_lc_ld_eabi.lib : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
+                  0000d50a    00000016                            : memory.c.obj (.text:heap_start)
+                  0000d520    00000016     main.obj (.text:noteSerialAvailable)
+                  0000d536    00000014     n_hooks.obj (.text:NoteFnGetMs)
+                  0000d54a    00000014     n_hooks.obj (.text:NoteFnTransaction)
+                  0000d55e    00000012     n_hooks.obj (.text:NoteFnMalloc)
+                  0000d570    00000012     n_hooks.obj (.text:NoteFnNoteReset)
+                  0000d582    00000012     n_hooks.obj (.text:NoteSetFn)
+                  0000d594    00000012     rts430x_lc_ld_eabi.lib : strcpy.c.obj (.text:strcpy)
+                  0000d5a6    00000012                            : strlen.c.obj (.text:strlen)
+                  0000d5b8    00000012                            : tolower.c.obj (.text:tolower)
+                  0000d5ca    00000010     n_cjson.obj (.text:JCreateObject)
+                  0000d5da    00000010     rts430x_lc_ld_eabi.lib : asr32.asm.obj (.text:l_asr)
+                  0000d5ea    00000010                            : lsl32.asm.obj (.text:l_lsl)
+                  0000d5fa    00000010                            : lsr32.asm.obj (.text:l_lsr)
+                  0000d60a    0000000e     eusci_a_uart.obj (.text:EUSCI_A_UART_clearInterrupt)
+                  0000d618    0000000e     n_hooks.obj (.text:NoteFnDelayMs)
+                  0000d626    0000000e     n_hooks.obj (.text:NoteFnFree)
+                  0000d634    0000000e     n_hooks.obj (.text:NoteFnLockNote)
+                  0000d642    0000000e     n_hooks.obj (.text:NoteFnUnlockNote)
+                  0000d650    0000000c     rts430x_lc_ld_eabi.lib : memory.c.obj (.text:malloc)
+                  0000d65c    0000000a     eusci_a_uart.obj (.text:EUSCI_A_UART_queryStatusFlags)
+                  0000d666    0000000a     eusci_b_i2c.obj (.text:EUSCI_B_I2C_masterReceiveMultiByteNext)
+                  0000d670    0000000a     n_cjson.obj (.text:JParse)
+                  0000d67a    0000000a     main.obj (.text:millis)
+                  0000d684    0000000a     n_cjson.obj (.text:print_string)
+                  0000d68e    0000000a     rts430x_lc_ld_eabi.lib : fs_neg.asm.obj (.text)
+                  0000d698    0000000a     n_cjson.obj (.text:suffix_object)
+                  0000d6a2    00000008     n_cjson.obj (.text:JAddItemToObject)
+                  0000d6aa    00000008     n_cjson.obj (.text:JGetObjectItem)
+                  0000d6b2    00000008     n_cjson.obj (.text:JPrintUnformatted)
+                  0000d6ba    00000006     eusci_a_uart.obj (.text:EUSCI_A_UART_enable)
+                  0000d6c0    00000006     eusci_b_i2c.obj (.text:EUSCI_B_I2C_masterReceiveMultiByteStop)
+                  0000d6c6    00000006     n_request.obj (.text:NoteResetRequired)
+                  0000d6cc    00000006     pmm.obj (.text:PMM_unlockLPM5)
+                  0000d6d2    00000006     timer_b.obj (.text:Timer_B_clearTimerInterrupt)
+                  0000d6d8    00000006     timer_b.obj (.text:Timer_B_startCounter)
+                  0000d6de    00000006     rts430x_lc_ld_eabi.lib : exit.c.obj (.text:abort)
+                  0000d6e4    00000006     n_cjson.obj (.text:get_decimal_point)
+                  0000d6ea    00000004     rts430x_lc_ld_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
+                  0000d6ee    00000002                            : _lock.c.obj (.text:_nop)
+                  0000d6f0    00000002                            : startup.c.obj (.text:_system_post_cinit)
+                  0000d6f2    00000002     n_cjson.obj (.text:cast_away_const)
 
 .text:_isr 
-*          0    0000e69e    00000176     
-                  0000e69e    000000ba     main.obj (.text:_isr:USCI_B0_ISR)
-                  0000e758    0000007e     main.obj (.text:_isr:USCI_A1_ISR)
-                  0000e7d6    00000020     rts430x_lc_ld_eabi.lib : boot.c.obj (.text:_isr:_c_int00_noargs_mpu)
-                  0000e7f6    00000016     main.obj (.text:_isr:TIMER0_B1_ISR)
-                  0000e80c    00000008     rts430x_lc_ld_eabi.lib : isr_trap.asm.obj (.text:_isr:__TI_ISR_TRAP)
+*          0    0000d6f4    00000176     
+                  0000d6f4    000000ba     main.obj (.text:_isr:USCI_B0_ISR)
+                  0000d7ae    0000007e     main.obj (.text:_isr:USCI_A1_ISR)
+                  0000d82c    00000020     rts430x_lc_ld_eabi.lib : boot.c.obj (.text:_isr:_c_int00_noargs_mpu)
+                  0000d84c    00000016     main.obj (.text:_isr:TIMER0_B1_ISR)
+                  0000d862    00000008     rts430x_lc_ld_eabi.lib : isr_trap.asm.obj (.text:_isr:__TI_ISR_TRAP)
 
 .bss       0    00002000    00000208     UNINITIALIZED
                   00002000    00000200     main.obj (.bss:serialBuffer)
                   00002200    00000004     main.obj (.bss)
                   00002204    00000004     rts430x_lc_ld_eabi.lib : memory.c.obj (.bss)
 
-.data      0    00002208    000000d2     UNINITIALIZED
+.data      0    00002208    00000099     UNINITIALIZED
                   00002208    00000054     n_hooks.obj (.data)
-                  0000225c    00000048     n_atof.obj (.data:powersOf10)
-                  000022a4    00000014     main.obj (.data)
-                  000022b8    0000000c     n_cjson.obj (.data:global_hooks)
-                  000022c4    00000008     n_cjson.obj (.data:global_error)
-                  000022cc    00000004     rts430x_lc_ld_eabi.lib : _lock.c.obj (.data:_lock)
-                  000022d0    00000004                            : _lock.c.obj (.data:_unlock)
-                  000022d4    00000002     example.obj (.data)
-                  000022d6    00000002     rts430x_lc_ld_eabi.lib : memory.c.obj (.data)
-                  000022d8    00000001     n_request.obj (.data)
-                  000022d9    00000001     n_serial.obj (.data)
+                  0000225c    0000001c     n_atof.obj (.data:powersOf10)
+                  00002278    00000014     main.obj (.data)
+                  0000228c    00000008     n_cjson.obj (.data:global_error)
+                  00002294    00000004     rts430x_lc_ld_eabi.lib : _lock.c.obj (.data:_lock)
+                  00002298    00000004                            : _lock.c.obj (.data:_unlock)
+                  0000229c    00000002     example.obj (.data)
+                  0000229e    00000002     rts430x_lc_ld_eabi.lib : memory.c.obj (.data)
+                  000022a0    00000001     n_request.obj (.data)
 
 .stack     0    00002f60    000000a0     UNINITIALIZED
                   00002f60    00000004     rts430x_lc_ld_eabi.lib : boot.c.obj (.stack)
@@ -421,9 +410,9 @@ MODULE SUMMARY
        ------                       ----    -------   -------
     .\
        main.obj                     1012    36        536    
-       example.obj                  360     166       2      
+       example.obj                  262     166       2      
     +--+----------------------------+-------+---------+---------+
-       Total:                       1372    202       538    
+       Total:                       1274    202       538    
                                                              
     .\driverlib\MSP430FR2xx_4xx\
        gpio.obj                     308     28        0      
@@ -436,15 +425,15 @@ MODULE SUMMARY
        Total:                       824     28        0      
                                                              
     .\note-c\
-       n_cjson.obj                  6898    60        20     
-       n_serial.obj                 766     432       1      
-       n_ftoa.obj                   906     88        0      
-       n_atof.obj                   772     2         72     
-       n_request.obj                456     126       1      
-       n_hooks.obj                  364     42        84     
-       n_cjson_helpers.obj          140     0         0      
+       n_cjson.obj                  6468    48        8      
+       n_ftoa.obj                   702     44        0      
+       n_atof.obj                   664     2         28     
+       n_serial.obj                 574     98        0      
+       n_request.obj                366     62        1      
+       n_hooks.obj                  302     42        84     
+       n_cjson_helpers.obj          120     0         0      
     +--+----------------------------+-------+---------+---------+
-       Total:                       10302   750       178    
+       Total:                       9196    296       121    
                                                              
     C:\ti\ccs910\ccs\ccs_base\msp430\lib\FR2xx\FRWP_INIT_LIB_CCS_msp430_large_code_large_data.lib
        frwp_init.obj                60      0         0      
@@ -452,50 +441,47 @@ MODULE SUMMARY
        Total:                       60      0         0      
                                                              
     C:\ti\ccs910\ccs\tools\compiler\ti-cgt-msp430_19.6.0.STS\lib\rts430x_lc_ld_eabi.lib
-       frcdivd.c.obj                1126    0         0      
        memory.c.obj                 1048    0         6      
-       _printfi_min.c.obj           898     20        0      
        addd.c.obj                   736     0         0      
        frcmpyd.c.obj                640     0         0      
        mpyd.c.obj                   614     0         0      
        frcaddd.c.obj                584     0         0      
-       divd.c.obj                   546     0         0      
-       vsnprintf.c.obj              264     0         0      
+       fs_add.asm.obj               306     0         0      
        ctype.c.obj                  0       257       0      
-       cmpd.c.obj                   216     0         0      
+       fs_mpy.asm.obj               184     0         0      
        renormd.c.obj                178     0         0      
        fltlid.c.obj                 158     0         0      
-       fltuld.c.obj                 128     0         0      
+       fs_div.asm.obj               144     0         0      
+       cvtdf.c.obj                  140     0         0      
+       fs_tol.asm.obj               126     0         0      
        autoinit.c.obj               120     0         0      
        copy_decompress_lzss.c.obj   118     0         0      
-       fixdli.c.obj                 102     0         0      
+       fs_toi.asm.obj               104     0         0      
        div32u.asm.obj               88      0         0      
        asr32.asm.obj                78      0         0      
        lsl32.asm.obj                78      0         0      
        lsr32.asm.obj                78      0         0      
+       fs_cmp.asm.obj               74      0         0      
+       fs_ltof.asm.obj              74      0         0      
        div32s.asm.obj               64      0         0      
        memcpy.c.obj                 60      0         0      
        strncmp.c.obj                56      0         0      
-       subd.c.obj                   50      0         0      
-       negd.c.obj                   46      0         0      
-       fixdi.c.obj                  40      0         0      
        copy_zero_init.c.obj         36      0         0      
+       fs_utof.asm.obj              36      0         0      
        mult32_f5hw.asm.obj          36      0         0      
        boot.c.obj                   32      2         0      
        memset.c.obj                 32      0         0      
-       memccpy.c.obj                30      0         0      
        strchr.c.obj                 28      0         0      
        strcmp.c.obj                 28      0         0      
        mult16_f5hw.asm.obj          24      0         0      
        copy_decompress_none.c.obj   22      0         0      
-       div16u.asm.obj               22      0         0      
        strcpy.c.obj                 18      0         0      
        strlen.c.obj                 18      0         0      
        tolower.c.obj                18      0         0      
        _lock.c.obj                  2       0         8      
+       fs_neg.asm.obj               10      0         0      
        isr_trap.asm.obj             8       0         0      
        exit.c.obj                   6       0         0      
-       fltud.c.obj                  6       0         0      
        pre_init.c.obj               4       0         0      
        int22.asm.obj                0       2         0      
        int23.asm.obj                0       2         0      
@@ -520,25 +506,25 @@ MODULE SUMMARY
        int45.asm.obj                0       2         0      
        startup.c.obj                2       0         0      
     +--+----------------------------+-------+---------+---------+
-       Total:                       8486    321       14     
+       Total:                       6210    301       14     
                                                              
        Heap:                        0       0         4096   
        Stack:                       0       0         160    
-       Linker Generated:            0       250       0      
+       Linker Generated:            0       193       0      
     +--+----------------------------+-------+---------+---------+
-       Grand Total:                 21044   1551      4986   
+       Grand Total:                 17564   1020      4929   
 
 
 LINKER GENERATED COPY TABLES
 
-__TI_cinit_table @ 000090ec records: 2, size/record: 8, table size: 16
-	.data: load addr=00009000, load size=000000d8 bytes, run addr=00002208, run size=000000d2 bytes, compression=copy
-	.bss: load addr=000090e6, load size=00000006 bytes, run addr=00002000, run size=00000208 bytes, compression=zero_init
+__TI_cinit_table @ 000090b4 records: 2, size/record: 8, table size: 16
+	.data: load addr=00009000, load size=0000009f bytes, run addr=00002208, run size=00000099 bytes, compression=copy
+	.bss: load addr=000090ae, load size=00000006 bytes, run addr=00002000, run size=00000208 bytes, compression=zero_init
 
 
 LINKER GENERATED HANDLER TABLE
 
-__TI_handler_table @ 000090da records: 3, size/record: 4, table size: 12
+__TI_handler_table @ 000090a2 records: 3, size/record: 4, table size: 12
 	index: 0, handler: __TI_zero_init
 	index: 1, handler: __TI_decompress_lzss
 	index: 2, handler: __TI_decompress_none
@@ -626,7 +612,7 @@ address   name
 00000672  BAKMEM9                                    
 00000673  BAKMEM9_H                                  
 00000672  BAKMEM9_L                                  
-0000e688  C$$EXIT                                    
+0000d6de  C$$EXIT                                    
 000002ee  CAPTIOCTL                                  
 000002ef  CAPTIOCTL_H                                
 000002ee  CAPTIOCTL_L                                
@@ -705,16 +691,16 @@ address   name
 00000190  CSCTL8                                     
 00000191  CSCTL8_H                                   
 00000190  CSCTL8_L                                   
-0000e5bc  EUSCI_A_UART_clearInterrupt                
-0000e65e  EUSCI_A_UART_enable                        
-0000e254  EUSCI_A_UART_enableInterrupt               
-0000d158  EUSCI_A_UART_init                          
-0000e61a  EUSCI_A_UART_queryStatusFlags              
-0000e276  EUSCI_A_UART_transmitData                  
-0000e624  EUSCI_B_I2C_masterReceiveMultiByteNext     
-0000e664  EUSCI_B_I2C_masterReceiveMultiByteStop     
-0000dfd2  EUSCI_B_I2C_masterSendMultiByteFinish      
-0000e298  EUSCI_B_I2C_masterSendMultiByteNext        
+0000d60a  EUSCI_A_UART_clearInterrupt                
+0000d6ba  EUSCI_A_UART_enable                        
+0000d2ec  EUSCI_A_UART_enableInterrupt               
+0000c22c  EUSCI_A_UART_init                          
+0000d65c  EUSCI_A_UART_queryStatusFlags              
+0000d30e  EUSCI_A_UART_transmitData                  
+0000d666  EUSCI_B_I2C_masterReceiveMultiByteNext     
+0000d6c0  EUSCI_B_I2C_masterReceiveMultiByteStop     
+0000d04c  EUSCI_B_I2C_masterSendMultiByteFinish      
+0000d330  EUSCI_B_I2C_masterSendMultiByteNext        
 000001a0  FRCTL0                                     
 000001a1  FRCTL0_H                                   
 000001a0  FRCTL0_L                                   
@@ -724,10 +710,10 @@ address   name
 000001a6  GCCTL1                                     
 000001a7  GCCTL1_H                                   
 000001a6  GCCTL1_L                                   
-0000df9e  GPIO_setAsOutputPin                        
-0000d574  GPIO_setAsPeripheralModuleFunctionInputPin 
-0000d5e6  GPIO_setAsPeripheralModuleFunctionOutputPin
-0000e374  GPIO_setOutputLowOnPin                     
+0000d018  GPIO_setAsOutputPin                        
+0000c6f2  GPIO_setAsPeripheralModuleFunctionInputPin 
+0000c764  GPIO_setAsPeripheralModuleFunctionOutputPin
+0000d408  GPIO_setOutputLowOnPin                     
 000006c4  ICCILSR0                                   
 000006c5  ICCILSR0_H                                 
 000006c4  ICCILSR0_L                                 
@@ -746,26 +732,27 @@ address   name
 000006c0  ICCSC                                      
 000006c1  ICCSC_H                                    
 000006c0  ICCSC_L                                    
-0000de8a  JAddBoolToObject                           
-0000e50e  JAddItemToObject                           
-0000daa4  JAddNumberToObject                         
-0000dec2  JAddStringToObject                         
-00009dd0  JAtoN                                      
-0000e2ba  JCreateBool                                
-0000d286  JCreateNumber                              
-0000e4d2  JCreateObject                              
-0000dbb2  JCreateString                              
-0000d866  JDelete                                    
-0000e66a  JFree                                      
-0000d9ca  JGetNumber                                 
-0000e656  JGetObjectItem                             
-0000db30  JIsNullString                              
-0000e3e4  JIsNumber                                  
-0000e390  JIsString                                  
-00009a46  JNtoA                                      
-0000e62e  JParse                                     
-0000bda6  JParseWithOpts                             
-0000e602  JPrintUnformatted                          
+0000d0de  JAddBoolToObject                           
+0000d6a2  JAddItemToObject                           
+0000d07e  JAddNumberToObject                         
+0000d10c  JAddStringToObject                         
+0000996c  JAtoN                                      
+0000d372  JCreateBool                                
+0000c9dc  JCreateNumber                              
+0000d5ca  JCreateObject                              
+0000cf76  JCreateString                              
+0000c97a  JDelete                                    
+0000d626  JFree                                      
+0000cfac  JGetNumber                                 
+0000d6aa  JGetObjectItem                             
+0000cc60  JIsNullString                              
+0000d478  JIsNumber                                  
+0000d424  JIsString                                  
+0000d55e  JMalloc                                    
+000096ae  JNtoA                                      
+0000d670  JParse                                     
+0000b552  JParseWithOpts                             
+0000d6b2  JPrintUnformatted                          
 000004c4  MAC                                        
 000004da  MAC32H                                     
 000004db  MAC32H_H                                   
@@ -805,26 +792,26 @@ address   name
 000004c2  MPYS_L                                     
 000004c1  MPY_H                                      
 000004c0  MPY_L                                      
-0000dbf0  NoteFnDebug                                
-0000e5ca  NoteFnDelayMs                              
-0000e5d8  NoteFnFree                                 
-0000e4e6  NoteFnGetMs                                
-0000e5e6  NoteFnLockNote                             
-0000e520  NoteFnMalloc                               
-0000e532  NoteFnNoteReset                            
-0000e2fc  NoteFnSerialAvailable                      
-0000e31a  NoteFnSerialReceive                        
-0000e3fe  NoteFnSerialReset                          
-0000e418  NoteFnSerialTransmit                       
-0000e4fa  NoteFnTransaction                          
-0000e5f4  NoteFnUnlockNote                           
-0000e338  NoteNewRequest                             
-0000dd26  NoteRequest                                
-0000e0f0  NoteRequestResponse                        
-0000e432  NoteReset                                  
-0000e544  NoteSetFn                                  
-0000e170  NoteSetFnSerial                            
-0000c88a  NoteTransaction                            
+0000d618  NoteFnDelayMs                              
+0000d626  NoteFnFree                                 
+0000d536  NoteFnGetMs                                
+0000d634  NoteFnLockNote                             
+0000d55e  NoteFnMalloc                               
+0000d570  NoteFnNoteReset                            
+0000d390  NoteFnSerialAvailable                      
+0000d3ae  NoteFnSerialReceive                        
+0000d492  NoteFnSerialReset                          
+0000d4ac  NoteFnSerialTransmit                       
+0000d54a  NoteFnTransaction                          
+0000d642  NoteFnUnlockNote                           
+0000d3cc  NoteNewRequest                             
+0000cdda  NoteRequest                                
+0000d168  NoteRequestResponse                        
+0000d25c  NoteReset                                  
+0000d6c6  NoteResetRequired                          
+0000d582  NoteSetFn                                  
+0000d1e8  NoteSetFnSerial                            
+0000c0ee  NoteTransaction                            
 000004c8  OP2                                        
 000004e2  OP2H                                       
 000004e3  OP2H_H                                     
@@ -1135,7 +1122,7 @@ address   name
 0000012a  PMMIFG                                     
 0000012b  PMMIFG_H                                   
 0000012a  PMMIFG_L                                   
-0000e670  PMM_unlockLPM5                             
+0000d6cc  PMM_unlockLPM5                             
 000004e4  RES0                                       
 000004e5  RES0_H                                     
 000004e4  RES0_L                                     
@@ -1433,10 +1420,10 @@ address   name
 00000450  TB3R                                       
 00000451  TB3R_H                                     
 00000450  TB3R_L                                     
-0000e7f6  TIMER0_B1_ISR                              
-0000e676  Timer_B_clearTimerInterrupt                
-0000d392  Timer_B_initUpMode                         
-0000e67c  Timer_B_startCounter                       
+0000d84c  TIMER0_B1_ISR                              
+0000d6d2  Timer_B_clearTimerInterrupt                
+0000c588  Timer_B_initUpMode                         
+0000d6d8  Timer_B_startCounter                       
 00000510  UCA0ABCTL                                  
 00000511  UCA0ABCTL_H                                
 00000510  UCA0ABCTL_L                                
@@ -1611,26 +1598,25 @@ address   name
 000005ce  UCB1TXBUF                                  
 000005cf  UCB1TXBUF_H                                
 000005ce  UCB1TXBUF_L                                
-0000e758  USCI_A1_ISR                                
-0000e69e  USCI_B0_ISR                                
+0000d7ae  USCI_A1_ISR                                
+0000d6f4  USCI_B0_ISR                                
 000001cc  WDTCTL                                     
 000001cd  WDTCTL_H                                   
 000001cc  WDTCTL_L                                   
-0000e464  WDT_A_hold                                 
+0000d4de  WDT_A_hold                                 
 00003000  __STACK_END                                
 000000a0  __STACK_SIZE                               
 00001000  __SYSMEM_SIZE                              
-000090ec  __TI_CINIT_Base                            
-000090fc  __TI_CINIT_Limit                           
-000090da  __TI_Handler_Table_Base                    
-000090e6  __TI_Handler_Table_Limit                   
-0000e80c  __TI_ISR_TRAP                              
-0000d40e  __TI_auto_init_nobinit_nopinit_hold_wdt    
-0000d4fe  __TI_decompress_lzss                       
-0000e47a  __TI_decompress_none                       
-0000ab30  __TI_frcaddd                               
-000095e0  __TI_frcdivd                               
-0000a64a  __TI_frcmpyd                               
+000090b4  __TI_CINIT_Base                            
+000090c4  __TI_CINIT_Limit                           
+000090a2  __TI_Handler_Table_Base                    
+000090ae  __TI_Handler_Table_Limit                   
+0000d862  __TI_ISR_TRAP                              
+0000c604  __TI_auto_init_nobinit_nopinit_hold_wdt    
+0000c67c  __TI_decompress_lzss                       
+0000d4f4  __TI_decompress_none                       
+0000a378  __TI_frcaddd                               
+00009e92  __TI_frcmpyd                               
 0000ffce  __TI_int22                                 
 0000ffd0  __TI_int23                                 
 0000ffd2  __TI_int24                                 
@@ -1656,97 +1642,97 @@ address   name
 0000fffa  __TI_int44                                 
 0000fffc  __TI_int45                                 
 ffffffff  __TI_pprof_out_hndl                        
-0000c97c  __TI_printfi_minimal                       
 ffffffff  __TI_prof_data_size                        
 ffffffff  __TI_prof_data_start                       
-0000cf56  __TI_renormd                               
-0000e20c  __TI_zero_init_nomemset                    
+0000bf8a  __TI_renormd                               
+0000d280  __TI_zero_init_nomemset                    
 ffffffff  __c_args__                                 
 00000001  __mpu_enable                               
-0000dd62  __mpu_init                                 
-0000a0d4  __mspabi_addd                              
-0000ccf8  __mspabi_cmpd                              
-0000afaa  __mspabi_divd                              
-0000db72  __mspabi_divli                             
-0000e4bc  __mspabi_divu                              
-0000d920  __mspabi_divul                             
-0000e198  __mspabi_fixdi                             
-0000d79a  __mspabi_fixdli                            
-0000d0ba  __mspabi_fltlid                            
-0000e682  __mspabi_fltud                             
-0000d312  __mspabi_fltuld                            
-0000a8ca  __mspabi_mpyd                              
-0000e44c  __mspabi_mpyi_f5hw                         
-0000e230  __mspabi_mpyl_f5hw                         
-0000e066  __mspabi_negd                              
-0000db72  __mspabi_remli                             
-0000e4bc  __mspabi_remu                              
-0000d920  __mspabi_remul                             
-0000e59c  __mspabi_slll                              
-0000dca4  __mspabi_slll_1                            
-0000dc80  __mspabi_slll_10                           
-0000dc7c  __mspabi_slll_11                           
-0000dc78  __mspabi_slll_12                           
-0000dc74  __mspabi_slll_13                           
-0000dc70  __mspabi_slll_14                           
-0000dc6c  __mspabi_slll_15                           
-0000dca0  __mspabi_slll_2                            
-0000dc9c  __mspabi_slll_3                            
-0000dc98  __mspabi_slll_4                            
-0000dc94  __mspabi_slll_5                            
-0000dc90  __mspabi_slll_6                            
-0000dc8c  __mspabi_slll_7                            
-0000dc88  __mspabi_slll_8                            
-0000dc84  __mspabi_slll_9                            
-0000e58c  __mspabi_sral                              
-0000dc66  __mspabi_sral_1                            
-0000dc42  __mspabi_sral_10                           
-0000dc3e  __mspabi_sral_11                           
-0000dc3a  __mspabi_sral_12                           
-0000dc36  __mspabi_sral_13                           
-0000dc32  __mspabi_sral_14                           
-0000dc2e  __mspabi_sral_15                           
-0000dc62  __mspabi_sral_2                            
-0000dc5e  __mspabi_sral_3                            
-0000dc5a  __mspabi_sral_4                            
-0000dc56  __mspabi_sral_5                            
-0000dc52  __mspabi_sral_6                            
-0000dc4e  __mspabi_sral_7                            
-0000dc4a  __mspabi_sral_8                            
-0000dc46  __mspabi_sral_9                            
-0000e5ac  __mspabi_srll                              
-0000dce2  __mspabi_srll_1                            
-0000dcbe  __mspabi_srll_10                           
-0000dcba  __mspabi_srll_11                           
-0000dcb6  __mspabi_srll_12                           
-0000dcb2  __mspabi_srll_13                           
-0000dcae  __mspabi_srll_14                           
-0000dcaa  __mspabi_srll_15                           
-0000dcde  __mspabi_srll_2                            
-0000dcda  __mspabi_srll_3                            
-0000dcd6  __mspabi_srll_4                            
-0000dcd2  __mspabi_srll_5                            
-0000dcce  __mspabi_srll_6                            
-0000dcca  __mspabi_srll_7                            
-0000dcc6  __mspabi_srll_8                            
-0000dcc2  __mspabi_srll_9                            
-0000e004  __mspabi_subd                              
-0000e7d6  _c_int00_noargs_mpu                        
-000092ac  _ctypes_                                   
-000022cc  _lock                                      
-0000e698  _nop                                       
+0000ce16  __mpu_init                                 
+000093ce  __mspabi_addd                              
+0000b68a  __mspabi_addf                              
+0000cb3e  __mspabi_cmpf                              
+0000c47e  __mspabi_cvtdf                             
+0000c3ee  __mspabi_divf                              
+0000cca2  __mspabi_divli                             
+0000ca94  __mspabi_divul                             
+0000c844  __mspabi_fixfi                             
+0000c50a  __mspabi_fixfli                            
+0000c18e  __mspabi_fltlid                            
+0000cb88  __mspabi_fltlif                            
+0000d2a4  __mspabi_fltuf                             
+0000a112  __mspabi_mpyd                              
+0000bed2  __mspabi_mpyf                              
+0000d4c6  __mspabi_mpyi_f5hw                         
+0000d2c8  __mspabi_mpyl_f5hw                         
+0000d68e  __mspabi_negf                              
+0000cca2  __mspabi_remli                             
+0000ca94  __mspabi_remul                             
+0000d5ea  __mspabi_slll                              
+0000cd58  __mspabi_slll_1                            
+0000cd34  __mspabi_slll_10                           
+0000cd30  __mspabi_slll_11                           
+0000cd2c  __mspabi_slll_12                           
+0000cd28  __mspabi_slll_13                           
+0000cd24  __mspabi_slll_14                           
+0000cd20  __mspabi_slll_15                           
+0000cd54  __mspabi_slll_2                            
+0000cd50  __mspabi_slll_3                            
+0000cd4c  __mspabi_slll_4                            
+0000cd48  __mspabi_slll_5                            
+0000cd44  __mspabi_slll_6                            
+0000cd40  __mspabi_slll_7                            
+0000cd3c  __mspabi_slll_8                            
+0000cd38  __mspabi_slll_9                            
+0000d5da  __mspabi_sral                              
+0000cd1a  __mspabi_sral_1                            
+0000ccf6  __mspabi_sral_10                           
+0000ccf2  __mspabi_sral_11                           
+0000ccee  __mspabi_sral_12                           
+0000ccea  __mspabi_sral_13                           
+0000cce6  __mspabi_sral_14                           
+0000cce2  __mspabi_sral_15                           
+0000cd16  __mspabi_sral_2                            
+0000cd12  __mspabi_sral_3                            
+0000cd0e  __mspabi_sral_4                            
+0000cd0a  __mspabi_sral_5                            
+0000cd06  __mspabi_sral_6                            
+0000cd02  __mspabi_sral_7                            
+0000ccfe  __mspabi_sral_8                            
+0000ccfa  __mspabi_sral_9                            
+0000d5fa  __mspabi_srll                              
+0000cd96  __mspabi_srll_1                            
+0000cd72  __mspabi_srll_10                           
+0000cd6e  __mspabi_srll_11                           
+0000cd6a  __mspabi_srll_12                           
+0000cd66  __mspabi_srll_13                           
+0000cd62  __mspabi_srll_14                           
+0000cd5e  __mspabi_srll_15                           
+0000cd92  __mspabi_srll_2                            
+0000cd8e  __mspabi_srll_3                            
+0000cd8a  __mspabi_srll_4                            
+0000cd86  __mspabi_srll_5                            
+0000cd82  __mspabi_srll_6                            
+0000cd7e  __mspabi_srll_7                            
+0000cd7a  __mspabi_srll_8                            
+0000cd76  __mspabi_srll_9                            
+0000b684  __mspabi_subf                              
+0000d82c  _c_int00_noargs_mpu                        
+000090c4  _ctypes_                                   
+00002294  _lock                                      
+0000d6ee  _nop                                       
 0000fffe  _reset_vector                              
 00002f60  _stack                                     
 00008000  _sys_memory                                
-0000e69a  _system_post_cinit                         
-0000e694  _system_pre_init                           
-000022d0  _unlock                                    
-0000e688  abort                                      
-0000b914  aligned_alloc                              
-0000e11c  delay                                      
+0000d6f0  _system_post_cinit                         
+0000d6ea  _system_pre_init                           
+00002298  _unlock                                    
+0000d6de  abort                                      
+0000aeac  aligned_alloc                              
+0000d194  delay                                      
 00008000  fram_rw_start                              
 00009000  fram_rx_start                              
-0000c2c6  free                                       
+0000b416  free                                       
 0000222c  hookActiveInterface                        
 00002208  hookDebugOutput                            
 00002224  hookDelayMs                                
@@ -1764,36 +1750,34 @@ ffffffff  __c_args__
 00002234  hookSerialTransmit                         
 00002210  hookUnlockI2C                              
 00002218  hookUnlockNote                             
-0000de50  htoa16                                     
+0000cf04  htoa16                                     
 00002240  i2cAddress                                 
 00002244  i2cMax                                     
 00000001  info_fram_protection                       
-0000d008  init_CS                                    
-0000d800  init_GPIO                                  
-0000c402  loop                                       
-0000dd9e  main                                       
-0000e60e  malloc                                     
-0000b914  memalign                                   
-0000e356  memccpy                                    
-0000ddda  memcpy                                     
-0000e2dc  memset                                     
-0000e638  millis                                     
-0000e4a6  noteSerialAvailable                        
-0000dce8  noteSerialReceive                          
-0000d1f2  noteSerialReset                            
-0000df68  noteSerialTransmit                         
+0000c03c  init_CS                                    
+0000c914  init_GPIO                                  
+0000bd42  loop                                       
+0000ce52  main                                       
+0000d650  malloc                                     
+0000aeac  memalign                                   
+0000ce8e  memcpy                                     
+0000d352  memset                                     
+0000d67a  millis                                     
+0000d520  noteSerialAvailable                        
+0000cd9c  noteSerialReceive                          
+0000c2c6  noteSerialReset                            
+0000cfe2  noteSerialTransmit                         
 00000001  program_fram_protection                    
-0000cdd0  serialNoteReset                            
-0000ad78  serialNoteTransaction                      
-0000e036  setup                                      
+0000c35a  serialNoteReset                            
+0000ad02  serialNoteTransaction                      
+0000d0ae  setup                                      
 00000004  start_protection_offset_address            
-0000e3ac  strchr                                     
-0000e3c8  strcmp                                     
-0000e556  strcpy                                     
-0000e568  strlen                                     
-0000defa  strncmp                                    
-0000e57a  tolower                                    
-0000d658  vsnprintf                                  
+0000d440  strchr                                     
+0000d45c  strcmp                                     
+0000d594  strcpy                                     
+0000d5a6  strlen                                     
+0000cf3e  strncmp                                    
+0000d5b8  tolower                                    
 
 
 GLOBAL SYMBOLS: SORTED BY Symbol Address 
@@ -2831,192 +2815,190 @@ address   name
 00002248  hookI2CReset                               
 0000224c  hookI2CTransmit                            
 00002250  hookI2CReceive                             
-000022cc  _lock                                      
-000022d0  _unlock                                    
+00002294  _lock                                      
+00002298  _unlock                                    
 00002f60  _stack                                     
 00003000  __STACK_END                                
 00008000  _sys_memory                                
 00008000  fram_rw_start                              
 00009000  fram_rx_start                              
-000090da  __TI_Handler_Table_Base                    
-000090e6  __TI_Handler_Table_Limit                   
-000090ec  __TI_CINIT_Base                            
-000090fc  __TI_CINIT_Limit                           
-000092ac  _ctypes_                                   
-000095e0  __TI_frcdivd                               
-00009a46  JNtoA                                      
-00009dd0  JAtoN                                      
-0000a0d4  __mspabi_addd                              
-0000a64a  __TI_frcmpyd                               
-0000a8ca  __mspabi_mpyd                              
-0000ab30  __TI_frcaddd                               
-0000ad78  serialNoteTransaction                      
-0000afaa  __mspabi_divd                              
-0000b914  aligned_alloc                              
-0000b914  memalign                                   
-0000bda6  JParseWithOpts                             
-0000c2c6  free                                       
-0000c402  loop                                       
-0000c88a  NoteTransaction                            
-0000c97c  __TI_printfi_minimal                       
-0000ccf8  __mspabi_cmpd                              
-0000cdd0  serialNoteReset                            
-0000cf56  __TI_renormd                               
-0000d008  init_CS                                    
-0000d0ba  __mspabi_fltlid                            
-0000d158  EUSCI_A_UART_init                          
-0000d1f2  noteSerialReset                            
-0000d286  JCreateNumber                              
-0000d312  __mspabi_fltuld                            
-0000d392  Timer_B_initUpMode                         
-0000d40e  __TI_auto_init_nobinit_nopinit_hold_wdt    
-0000d4fe  __TI_decompress_lzss                       
-0000d574  GPIO_setAsPeripheralModuleFunctionInputPin 
-0000d5e6  GPIO_setAsPeripheralModuleFunctionOutputPin
-0000d658  vsnprintf                                  
-0000d79a  __mspabi_fixdli                            
-0000d800  init_GPIO                                  
-0000d866  JDelete                                    
-0000d920  __mspabi_divul                             
-0000d920  __mspabi_remul                             
-0000d9ca  JGetNumber                                 
-0000daa4  JAddNumberToObject                         
-0000db30  JIsNullString                              
-0000db72  __mspabi_divli                             
-0000db72  __mspabi_remli                             
-0000dbb2  JCreateString                              
-0000dbf0  NoteFnDebug                                
-0000dc2e  __mspabi_sral_15                           
-0000dc32  __mspabi_sral_14                           
-0000dc36  __mspabi_sral_13                           
-0000dc3a  __mspabi_sral_12                           
-0000dc3e  __mspabi_sral_11                           
-0000dc42  __mspabi_sral_10                           
-0000dc46  __mspabi_sral_9                            
-0000dc4a  __mspabi_sral_8                            
-0000dc4e  __mspabi_sral_7                            
-0000dc52  __mspabi_sral_6                            
-0000dc56  __mspabi_sral_5                            
-0000dc5a  __mspabi_sral_4                            
-0000dc5e  __mspabi_sral_3                            
-0000dc62  __mspabi_sral_2                            
-0000dc66  __mspabi_sral_1                            
-0000dc6c  __mspabi_slll_15                           
-0000dc70  __mspabi_slll_14                           
-0000dc74  __mspabi_slll_13                           
-0000dc78  __mspabi_slll_12                           
-0000dc7c  __mspabi_slll_11                           
-0000dc80  __mspabi_slll_10                           
-0000dc84  __mspabi_slll_9                            
-0000dc88  __mspabi_slll_8                            
-0000dc8c  __mspabi_slll_7                            
-0000dc90  __mspabi_slll_6                            
-0000dc94  __mspabi_slll_5                            
-0000dc98  __mspabi_slll_4                            
-0000dc9c  __mspabi_slll_3                            
-0000dca0  __mspabi_slll_2                            
-0000dca4  __mspabi_slll_1                            
-0000dcaa  __mspabi_srll_15                           
-0000dcae  __mspabi_srll_14                           
-0000dcb2  __mspabi_srll_13                           
-0000dcb6  __mspabi_srll_12                           
-0000dcba  __mspabi_srll_11                           
-0000dcbe  __mspabi_srll_10                           
-0000dcc2  __mspabi_srll_9                            
-0000dcc6  __mspabi_srll_8                            
-0000dcca  __mspabi_srll_7                            
-0000dcce  __mspabi_srll_6                            
-0000dcd2  __mspabi_srll_5                            
-0000dcd6  __mspabi_srll_4                            
-0000dcda  __mspabi_srll_3                            
-0000dcde  __mspabi_srll_2                            
-0000dce2  __mspabi_srll_1                            
-0000dce8  noteSerialReceive                          
-0000dd26  NoteRequest                                
-0000dd62  __mpu_init                                 
-0000dd9e  main                                       
-0000ddda  memcpy                                     
-0000de50  htoa16                                     
-0000de8a  JAddBoolToObject                           
-0000dec2  JAddStringToObject                         
-0000defa  strncmp                                    
-0000df68  noteSerialTransmit                         
-0000df9e  GPIO_setAsOutputPin                        
-0000dfd2  EUSCI_B_I2C_masterSendMultiByteFinish      
-0000e004  __mspabi_subd                              
-0000e036  setup                                      
-0000e066  __mspabi_negd                              
-0000e0f0  NoteRequestResponse                        
-0000e11c  delay                                      
-0000e170  NoteSetFnSerial                            
-0000e198  __mspabi_fixdi                             
-0000e20c  __TI_zero_init_nomemset                    
-0000e230  __mspabi_mpyl_f5hw                         
-0000e254  EUSCI_A_UART_enableInterrupt               
-0000e276  EUSCI_A_UART_transmitData                  
-0000e298  EUSCI_B_I2C_masterSendMultiByteNext        
-0000e2ba  JCreateBool                                
-0000e2dc  memset                                     
-0000e2fc  NoteFnSerialAvailable                      
-0000e31a  NoteFnSerialReceive                        
-0000e338  NoteNewRequest                             
-0000e356  memccpy                                    
-0000e374  GPIO_setOutputLowOnPin                     
-0000e390  JIsString                                  
-0000e3ac  strchr                                     
-0000e3c8  strcmp                                     
-0000e3e4  JIsNumber                                  
-0000e3fe  NoteFnSerialReset                          
-0000e418  NoteFnSerialTransmit                       
-0000e432  NoteReset                                  
-0000e44c  __mspabi_mpyi_f5hw                         
-0000e464  WDT_A_hold                                 
-0000e47a  __TI_decompress_none                       
-0000e4a6  noteSerialAvailable                        
-0000e4bc  __mspabi_divu                              
-0000e4bc  __mspabi_remu                              
-0000e4d2  JCreateObject                              
-0000e4e6  NoteFnGetMs                                
-0000e4fa  NoteFnTransaction                          
-0000e50e  JAddItemToObject                           
-0000e520  NoteFnMalloc                               
-0000e532  NoteFnNoteReset                            
-0000e544  NoteSetFn                                  
-0000e556  strcpy                                     
-0000e568  strlen                                     
-0000e57a  tolower                                    
-0000e58c  __mspabi_sral                              
-0000e59c  __mspabi_slll                              
-0000e5ac  __mspabi_srll                              
-0000e5bc  EUSCI_A_UART_clearInterrupt                
-0000e5ca  NoteFnDelayMs                              
-0000e5d8  NoteFnFree                                 
-0000e5e6  NoteFnLockNote                             
-0000e5f4  NoteFnUnlockNote                           
-0000e602  JPrintUnformatted                          
-0000e60e  malloc                                     
-0000e61a  EUSCI_A_UART_queryStatusFlags              
-0000e624  EUSCI_B_I2C_masterReceiveMultiByteNext     
-0000e62e  JParse                                     
-0000e638  millis                                     
-0000e656  JGetObjectItem                             
-0000e65e  EUSCI_A_UART_enable                        
-0000e664  EUSCI_B_I2C_masterReceiveMultiByteStop     
-0000e66a  JFree                                      
-0000e670  PMM_unlockLPM5                             
-0000e676  Timer_B_clearTimerInterrupt                
-0000e67c  Timer_B_startCounter                       
-0000e682  __mspabi_fltud                             
-0000e688  C$$EXIT                                    
-0000e688  abort                                      
-0000e694  _system_pre_init                           
-0000e698  _nop                                       
-0000e69a  _system_post_cinit                         
-0000e69e  USCI_B0_ISR                                
-0000e758  USCI_A1_ISR                                
-0000e7d6  _c_int00_noargs_mpu                        
-0000e7f6  TIMER0_B1_ISR                              
-0000e80c  __TI_ISR_TRAP                              
+000090a2  __TI_Handler_Table_Base                    
+000090ae  __TI_Handler_Table_Limit                   
+000090b4  __TI_CINIT_Base                            
+000090c4  __TI_CINIT_Limit                           
+000090c4  _ctypes_                                   
+000093ce  __mspabi_addd                              
+000096ae  JNtoA                                      
+0000996c  JAtoN                                      
+00009e92  __TI_frcmpyd                               
+0000a112  __mspabi_mpyd                              
+0000a378  __TI_frcaddd                               
+0000ad02  serialNoteTransaction                      
+0000aeac  aligned_alloc                              
+0000aeac  memalign                                   
+0000b416  free                                       
+0000b552  JParseWithOpts                             
+0000b684  __mspabi_subf                              
+0000b68a  __mspabi_addf                              
+0000bd42  loop                                       
+0000bed2  __mspabi_mpyf                              
+0000bf8a  __TI_renormd                               
+0000c03c  init_CS                                    
+0000c0ee  NoteTransaction                            
+0000c18e  __mspabi_fltlid                            
+0000c22c  EUSCI_A_UART_init                          
+0000c2c6  noteSerialReset                            
+0000c35a  serialNoteReset                            
+0000c3ee  __mspabi_divf                              
+0000c47e  __mspabi_cvtdf                             
+0000c50a  __mspabi_fixfli                            
+0000c588  Timer_B_initUpMode                         
+0000c604  __TI_auto_init_nobinit_nopinit_hold_wdt    
+0000c67c  __TI_decompress_lzss                       
+0000c6f2  GPIO_setAsPeripheralModuleFunctionInputPin 
+0000c764  GPIO_setAsPeripheralModuleFunctionOutputPin
+0000c844  __mspabi_fixfi                             
+0000c914  init_GPIO                                  
+0000c97a  JDelete                                    
+0000c9dc  JCreateNumber                              
+0000ca94  __mspabi_divul                             
+0000ca94  __mspabi_remul                             
+0000cb3e  __mspabi_cmpf                              
+0000cb88  __mspabi_fltlif                            
+0000cc60  JIsNullString                              
+0000cca2  __mspabi_divli                             
+0000cca2  __mspabi_remli                             
+0000cce2  __mspabi_sral_15                           
+0000cce6  __mspabi_sral_14                           
+0000ccea  __mspabi_sral_13                           
+0000ccee  __mspabi_sral_12                           
+0000ccf2  __mspabi_sral_11                           
+0000ccf6  __mspabi_sral_10                           
+0000ccfa  __mspabi_sral_9                            
+0000ccfe  __mspabi_sral_8                            
+0000cd02  __mspabi_sral_7                            
+0000cd06  __mspabi_sral_6                            
+0000cd0a  __mspabi_sral_5                            
+0000cd0e  __mspabi_sral_4                            
+0000cd12  __mspabi_sral_3                            
+0000cd16  __mspabi_sral_2                            
+0000cd1a  __mspabi_sral_1                            
+0000cd20  __mspabi_slll_15                           
+0000cd24  __mspabi_slll_14                           
+0000cd28  __mspabi_slll_13                           
+0000cd2c  __mspabi_slll_12                           
+0000cd30  __mspabi_slll_11                           
+0000cd34  __mspabi_slll_10                           
+0000cd38  __mspabi_slll_9                            
+0000cd3c  __mspabi_slll_8                            
+0000cd40  __mspabi_slll_7                            
+0000cd44  __mspabi_slll_6                            
+0000cd48  __mspabi_slll_5                            
+0000cd4c  __mspabi_slll_4                            
+0000cd50  __mspabi_slll_3                            
+0000cd54  __mspabi_slll_2                            
+0000cd58  __mspabi_slll_1                            
+0000cd5e  __mspabi_srll_15                           
+0000cd62  __mspabi_srll_14                           
+0000cd66  __mspabi_srll_13                           
+0000cd6a  __mspabi_srll_12                           
+0000cd6e  __mspabi_srll_11                           
+0000cd72  __mspabi_srll_10                           
+0000cd76  __mspabi_srll_9                            
+0000cd7a  __mspabi_srll_8                            
+0000cd7e  __mspabi_srll_7                            
+0000cd82  __mspabi_srll_6                            
+0000cd86  __mspabi_srll_5                            
+0000cd8a  __mspabi_srll_4                            
+0000cd8e  __mspabi_srll_3                            
+0000cd92  __mspabi_srll_2                            
+0000cd96  __mspabi_srll_1                            
+0000cd9c  noteSerialReceive                          
+0000cdda  NoteRequest                                
+0000ce16  __mpu_init                                 
+0000ce52  main                                       
+0000ce8e  memcpy                                     
+0000cf04  htoa16                                     
+0000cf3e  strncmp                                    
+0000cf76  JCreateString                              
+0000cfac  JGetNumber                                 
+0000cfe2  noteSerialTransmit                         
+0000d018  GPIO_setAsOutputPin                        
+0000d04c  EUSCI_B_I2C_masterSendMultiByteFinish      
+0000d07e  JAddNumberToObject                         
+0000d0ae  setup                                      
+0000d0de  JAddBoolToObject                           
+0000d10c  JAddStringToObject                         
+0000d168  NoteRequestResponse                        
+0000d194  delay                                      
+0000d1e8  NoteSetFnSerial                            
+0000d25c  NoteReset                                  
+0000d280  __TI_zero_init_nomemset                    
+0000d2a4  __mspabi_fltuf                             
+0000d2c8  __mspabi_mpyl_f5hw                         
+0000d2ec  EUSCI_A_UART_enableInterrupt               
+0000d30e  EUSCI_A_UART_transmitData                  
+0000d330  EUSCI_B_I2C_masterSendMultiByteNext        
+0000d352  memset                                     
+0000d372  JCreateBool                                
+0000d390  NoteFnSerialAvailable                      
+0000d3ae  NoteFnSerialReceive                        
+0000d3cc  NoteNewRequest                             
+0000d408  GPIO_setOutputLowOnPin                     
+0000d424  JIsString                                  
+0000d440  strchr                                     
+0000d45c  strcmp                                     
+0000d478  JIsNumber                                  
+0000d492  NoteFnSerialReset                          
+0000d4ac  NoteFnSerialTransmit                       
+0000d4c6  __mspabi_mpyi_f5hw                         
+0000d4de  WDT_A_hold                                 
+0000d4f4  __TI_decompress_none                       
+0000d520  noteSerialAvailable                        
+0000d536  NoteFnGetMs                                
+0000d54a  NoteFnTransaction                          
+0000d55e  JMalloc                                    
+0000d55e  NoteFnMalloc                               
+0000d570  NoteFnNoteReset                            
+0000d582  NoteSetFn                                  
+0000d594  strcpy                                     
+0000d5a6  strlen                                     
+0000d5b8  tolower                                    
+0000d5ca  JCreateObject                              
+0000d5da  __mspabi_sral                              
+0000d5ea  __mspabi_slll                              
+0000d5fa  __mspabi_srll                              
+0000d60a  EUSCI_A_UART_clearInterrupt                
+0000d618  NoteFnDelayMs                              
+0000d626  JFree                                      
+0000d626  NoteFnFree                                 
+0000d634  NoteFnLockNote                             
+0000d642  NoteFnUnlockNote                           
+0000d650  malloc                                     
+0000d65c  EUSCI_A_UART_queryStatusFlags              
+0000d666  EUSCI_B_I2C_masterReceiveMultiByteNext     
+0000d670  JParse                                     
+0000d67a  millis                                     
+0000d68e  __mspabi_negf                              
+0000d6a2  JAddItemToObject                           
+0000d6aa  JGetObjectItem                             
+0000d6b2  JPrintUnformatted                          
+0000d6ba  EUSCI_A_UART_enable                        
+0000d6c0  EUSCI_B_I2C_masterReceiveMultiByteStop     
+0000d6c6  NoteResetRequired                          
+0000d6cc  PMM_unlockLPM5                             
+0000d6d2  Timer_B_clearTimerInterrupt                
+0000d6d8  Timer_B_startCounter                       
+0000d6de  C$$EXIT                                    
+0000d6de  abort                                      
+0000d6ea  _system_pre_init                           
+0000d6ee  _nop                                       
+0000d6f0  _system_post_cinit                         
+0000d6f4  USCI_B0_ISR                                
+0000d7ae  USCI_A1_ISR                                
+0000d82c  _c_int00_noargs_mpu                        
+0000d84c  TIMER0_B1_ISR                              
+0000d862  __TI_ISR_TRAP                              
 0000ffce  __TI_int22                                 
 0000ffd0  __TI_int23                                 
 0000ffd2  __TI_int24                                 
@@ -3047,4 +3029,4 @@ ffffffff  __TI_prof_data_size
 ffffffff  __TI_prof_data_start                       
 ffffffff  __c_args__                                 
 
-[1246 symbols]
+[1244 symbols]

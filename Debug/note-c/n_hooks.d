@@ -1,0 +1,43 @@
+# FIXED
+
+note-c/n_hooks.obj: ../note-c/n_hooks.c
+note-c/n_hooks.obj: C:/ti/ccs910/ccs/tools/compiler/ti-cgt-msp430_19.6.0.STS/include/stdio.h
+note-c/n_hooks.obj: C:/ti/ccs910/ccs/tools/compiler/ti-cgt-msp430_19.6.0.STS/include/_ti_config.h
+note-c/n_hooks.obj: C:/ti/ccs910/ccs/tools/compiler/ti-cgt-msp430_19.6.0.STS/include/linkage.h
+note-c/n_hooks.obj: C:/ti/ccs910/ccs/tools/compiler/ti-cgt-msp430_19.6.0.STS/include/stdarg.h
+note-c/n_hooks.obj: C:/ti/ccs910/ccs/tools/compiler/ti-cgt-msp430_19.6.0.STS/include/sys/_types.h
+note-c/n_hooks.obj: C:/ti/ccs910/ccs/tools/compiler/ti-cgt-msp430_19.6.0.STS/include/sys/cdefs.h
+note-c/n_hooks.obj: C:/ti/ccs910/ccs/tools/compiler/ti-cgt-msp430_19.6.0.STS/include/machine/_types.h
+note-c/n_hooks.obj: C:/ti/ccs910/ccs/tools/compiler/ti-cgt-msp430_19.6.0.STS/include/stdlib.h
+note-c/n_hooks.obj: ../note-c/n_lib.h
+note-c/n_hooks.obj: C:/ti/ccs910/ccs/tools/compiler/ti-cgt-msp430_19.6.0.STS/include/string.h
+note-c/n_hooks.obj: ../note-c/note.h
+note-c/n_hooks.obj: C:/ti/ccs910/ccs/tools/compiler/ti-cgt-msp430_19.6.0.STS/include/stdbool.h
+note-c/n_hooks.obj: C:/ti/ccs910/ccs/tools/compiler/ti-cgt-msp430_19.6.0.STS/include/stdint.h
+note-c/n_hooks.obj: C:/ti/ccs910/ccs/tools/compiler/ti-cgt-msp430_19.6.0.STS/include/_stdint40.h
+note-c/n_hooks.obj: C:/ti/ccs910/ccs/tools/compiler/ti-cgt-msp430_19.6.0.STS/include/sys/stdint.h
+note-c/n_hooks.obj: C:/ti/ccs910/ccs/tools/compiler/ti-cgt-msp430_19.6.0.STS/include/machine/_stdint.h
+note-c/n_hooks.obj: C:/ti/ccs910/ccs/tools/compiler/ti-cgt-msp430_19.6.0.STS/include/sys/_stdint.h
+note-c/n_hooks.obj: ../note-c/n_cjson.h
+note-c/n_hooks.obj: C:/ti/ccs910/ccs/tools/compiler/ti-cgt-msp430_19.6.0.STS/include/stddef.h
+
+../note-c/n_hooks.c: 
+C:/ti/ccs910/ccs/tools/compiler/ti-cgt-msp430_19.6.0.STS/include/stdio.h: 
+C:/ti/ccs910/ccs/tools/compiler/ti-cgt-msp430_19.6.0.STS/include/_ti_config.h: 
+C:/ti/ccs910/ccs/tools/compiler/ti-cgt-msp430_19.6.0.STS/include/linkage.h: 
+C:/ti/ccs910/ccs/tools/compiler/ti-cgt-msp430_19.6.0.STS/include/stdarg.h: 
+C:/ti/ccs910/ccs/tools/compiler/ti-cgt-msp430_19.6.0.STS/include/sys/_types.h: 
+C:/ti/ccs910/ccs/tools/compiler/ti-cgt-msp430_19.6.0.STS/include/sys/cdefs.h: 
+C:/ti/ccs910/ccs/tools/compiler/ti-cgt-msp430_19.6.0.STS/include/machine/_types.h: 
+C:/ti/ccs910/ccs/tools/compiler/ti-cgt-msp430_19.6.0.STS/include/stdlib.h: 
+../note-c/n_lib.h: 
+C:/ti/ccs910/ccs/tools/compiler/ti-cgt-msp430_19.6.0.STS/include/string.h: 
+../note-c/note.h: 
+C:/ti/ccs910/ccs/tools/compiler/ti-cgt-msp430_19.6.0.STS/include/stdbool.h: 
+C:/ti/ccs910/ccs/tools/compiler/ti-cgt-msp430_19.6.0.STS/include/stdint.h: 
+C:/ti/ccs910/ccs/tools/compiler/ti-cgt-msp430_19.6.0.STS/include/_stdint40.h: 
+C:/ti/ccs910/ccs/tools/compiler/ti-cgt-msp430_19.6.0.STS/include/sys/stdint.h: 
+C:/ti/ccs910/ccs/tools/compiler/ti-cgt-msp430_19.6.0.STS/include/machine/_stdint.h: 
+C:/ti/ccs910/ccs/tools/compiler/ti-cgt-msp430_19.6.0.STS/include/sys/_stdint.h: 
+../note-c/n_cjson.h: 
+C:/ti/ccs910/ccs/tools/compiler/ti-cgt-msp430_19.6.0.STS/include/stddef.h: 
