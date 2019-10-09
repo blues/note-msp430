@@ -2,7 +2,6 @@
 // Use of this source code is governed by licenses granted by the
 // copyright holder including that found in the LICENSE file.
 
-
 #include <driverlib.h>
 #include <stdint.h>
 #include <stdbool.h>
@@ -10,10 +9,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include "main.h"
-#include "note.h"
-
-// Choose whether to use I2C or SERIAL for the Notecard
-#define NOTECARD_USE_I2C    false
 
 // MSP430FR2355 UCB0SDA and UCB0SCL
 // http://www.ti.com/lit/ug/slau680/slau680.pdf
@@ -29,12 +24,15 @@
 #define I2C_FREQUENCY       EUSCI_B_I2C_SET_DATA_RATE_100KBPS
 
 // Data for Notecard I/O functions
+#if !NOTECARD_USE_I2C
 static size_t serialOverruns = 0;
 static volatile size_t serialFillIndex = 0;
 static volatile size_t serialDrainIndex = 0;
 static char serialBuffer[512];
+#endif
 
 // I2C parameters
+#if NOTECARD_USE_I2C
 static EUSCI_B_I2C_initMasterParam i2cConfig = {
     EUSCI_B_I2C_CLOCKSOURCE_SMCLK,
     SMCLK_FREQUENCY,
@@ -44,6 +42,7 @@ static EUSCI_B_I2C_initMasterParam i2cConfig = {
 };
 static char *i2cBufferNext;
 static uint32_t i2cBufferLeft = 0;
+#endif
 
 // Clock timer
 static long unsigned int ticksMs = 0;
@@ -51,35 +50,15 @@ static long unsigned int ticksMs = 0;
 // Forwards
 void init_GPIO(void);
 void init_CS(void);
-void noteSerialReset(void);
-void noteSerialTransmit(uint8_t *text, size_t len, bool flush);
-bool noteSerialAvailable(void);
-char noteSerialReceive(void);
-void noteI2CReset(void);
-size_t noteDebugSerialOutput(const char *message);
-const char *noteI2CTransmit(uint16_t DevAddress, uint8_t* pBuffer, uint16_t Size);
-const char *noteI2CReceive(uint16_t DevAddress, uint8_t* pBuffer, uint16_t Size, uint32_t *avail);
-long unsigned int millis(void);
-void delay(uint32_t ms);
 
 // Main entry point
 int main(void) {
 
-    // Initialize MSP430 peripherals
+    // Initialize MSP430 peripherals as needed
     init_CS();
     init_GPIO();
 
-    // Register callbacks with note-c subsystem that it needs for I/O, memory, timer
-    NoteSetFn(malloc, free, delay, millis);
-
-    // Register callbacks for Notecard I/O
-#if NOTECARD_USE_I2C
-    NoteSetFnI2C(NOTE_I2C_ADDR_DEFAULT, NOTE_I2C_MAX_DEFAULT, noteI2CReset, noteI2CTransmit, noteI2CReceive);
-#else
-    NoteSetFnSerial(noteSerialReset, noteSerialTransmit, noteSerialAvailable, noteSerialReceive);
-#endif
-
-    // Use this method of invoking main app code so that we can re-use familiar Arduino examples
+    // Simulate an Arduino-like setup/loop interface
     setup();
     while (true)
         loop();
@@ -148,6 +127,7 @@ void init_CS(void) {
 }
 
 // Serial port reset procedure, called before any I/O and called again upon I/O error
+#if !NOTECARD_USE_I2C
 void noteSerialReset() {
 
     // Configure UCA1TXD and UCA1RXD
@@ -181,8 +161,10 @@ void noteSerialReset() {
     ((void)(serialOverruns));
 
 }
+#endif
 
 // Serial write data function
+#if !NOTECARD_USE_I2C
 void noteSerialTransmit(uint8_t *text, size_t len, bool flush) {
     while (len > 0) {
         while (EUSCI_A_UART_queryStatusFlags(EUSCI_A1_BASE, EUSCI_A_UART_BUSY));
@@ -190,13 +172,17 @@ void noteSerialTransmit(uint8_t *text, size_t len, bool flush) {
         len--;
     }
 }
+#endif
 
 // Serial "is anything available" function, which does a read-ahead for data into a serial buffer
+#if !NOTECARD_USE_I2C
 bool noteSerialAvailable() {
     return (serialFillIndex != serialDrainIndex);
 }
+#endif
 
 // Blocking serial read a byte function (generally only called if known to be available)
+#if !NOTECARD_USE_I2C
 char noteSerialReceive() {
     char data;
     while (!noteSerialAvailable()) ;
@@ -208,8 +194,10 @@ char noteSerialReceive() {
     }
     return data;
 }
+#endif
 
 // I2C reset procedure, called before any I/O and called again upon I/O error
+#if NOTECARD_USE_I2C
 void noteI2CReset() {
     i2cConfig.i2cClk = CS_getSMCLK();
     GPIO_setAsPeripheralModuleFunctionInputPin( I2C_PORT, I2C_PIN_SCL | I2C_PIN_SDA,
@@ -217,10 +205,12 @@ void noteI2CReset() {
     EUSCI_B_I2C_initMaster(EUSCI_B0_BASE, &i2cConfig);
     __bis_SR_register(GIE);
 }
+#endif
 
 // Transmits in master mode an amount of data, in blocking mode.     The address
 // is the actual address; the caller should have shifted it right so that the
 // low bit is NOT the read/write bit. An error message is returned, else NULL if success.
+#if NOTECARD_USE_I2C
 const char *noteI2CTransmit(uint16_t DevAddress, uint8_t* pBuffer, uint16_t Size) {
 
     // Special-case Size == 0 as being equivalent to 1 because of the I2C Receive header
@@ -261,8 +251,10 @@ const char *noteI2CTransmit(uint16_t DevAddress, uint8_t* pBuffer, uint16_t Size
 
     return NULL;
 }
+#endif
 
 // Receives in master mode an amount of data in blocking mode. An error mesage returned, else NULL if success.
+#if NOTECARD_USE_I2C
 const char *noteI2CReceive(uint16_t DevAddress, uint8_t* pBuffer, uint16_t Size, uint32_t *available) {
 
     // Transmit a signal that "about to do a receive of N bytes" to the slave, with a special-case Size == 0
@@ -309,6 +301,7 @@ const char *noteI2CReceive(uint16_t DevAddress, uint8_t* pBuffer, uint16_t Size,
     return errstr;
 
 }
+#endif
 
 // Get the number of app milliseconds since boot (this will wrap)
 long unsigned int millis() {
@@ -322,6 +315,7 @@ void delay(uint32_t ms) {
 }
 
 // EUSCI Interrupt Service Routine
+#if !NOTECARD_USE_I2C
 #if defined(__TI_COMPILER_VERSION__) || defined(__IAR_SYSTEMS_ICC__)
 #pragma vector=USCI_A1_VECTOR
 __interrupt void USCI_A1_ISR(void)
@@ -361,8 +355,10 @@ __interrupt void USCI_A1_ISR(void)
     }
 
 }
+#endif
 
 // USCI B0 interrupt service routine
+#if NOTECARD_USE_I2C
 #if defined(__TI_COMPILER_VERSION__) || defined(__IAR_SYSTEMS_ICC__)
 #pragma vector=USCI_B0_VECTOR
 __interrupt void USCI_B0_ISR(void)
@@ -433,6 +429,7 @@ __interrupt void USCI_B0_ISR(void)
         break;
     }
 }
+#endif
 
 // Timer B interrupt service routine
 #if defined(__TI_COMPILER_VERSION__) || defined(__IAR_SYSTEMS_ICC__)
