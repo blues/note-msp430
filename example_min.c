@@ -20,7 +20,7 @@ void setup() {
     noteSerialReset();
 
     // The request field sets up service operation parameters
-#define F_REQ "\"req\":\"service.set\""
+#define F_REQ "\"req\":\"hub.set\""
 
     // This command (required) causes the data to be delivered to the Project on notehub.io that has claimed
     // this Product ID.  (see above)
@@ -33,12 +33,12 @@ void setup() {
 #if myLiveDemo
 #define F_MODE "\"mode\":\"continuous\""
 #else
-#define F_MODE "\"mode\":\"periodic\",\"minutes\":60"
+#define F_MODE "\"mode\":\"periodic\",\"outbound\":60"
 #endif
 
     // Issue the request, telling the Notecard how and how often to access the service.
     // This results in a JSON message to Notecard formatted like:
-    //     { "req"     : "service.set",
+    //     { "req"     : "hub.set",
     //       "product" : myProductID,
     //       "mode"    : "continuous"
     //     }
