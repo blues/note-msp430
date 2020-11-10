@@ -43,7 +43,7 @@ void noteSerialReset(void);
 void noteSerialTransmit(uint8_t *text, size_t len, bool flush);
 bool noteSerialAvailable(void);
 char noteSerialReceive(void);
-void noteI2CReset(void);
+void noteI2CReset(uint16_t DevAddress);
 size_t noteDebugSerialOutput(const char *message);
 const char *noteI2CTransmit(uint16_t DevAddress, uint8_t* pBuffer, uint16_t Size);
 const char *noteI2CReceive(uint16_t DevAddress, uint8_t* pBuffer, uint16_t Size, uint32_t *avail);

@@ -198,7 +198,7 @@ char noteSerialReceive() {
 
 // I2C reset procedure, called before any I/O and called again upon I/O error
 #if NOTECARD_USE_I2C
-void noteI2CReset() {
+void noteI2CReset(uint16_t DevAddress) {
     i2cConfig.i2cClk = CS_getSMCLK();
     GPIO_setAsPeripheralModuleFunctionInputPin( I2C_PORT, I2C_PIN_SCL | I2C_PIN_SDA,
                                                 GPIO_PRIMARY_MODULE_FUNCTION );
