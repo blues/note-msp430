@@ -1,4 +1,4 @@
-# Contributing to blues/note-nrf
+# Contributing to blues/note-msp430
 
 We love pull requests from everyone. By participating in this project, you
 agree to abide by the Blues Inc [code of conduct].
@@ -18,7 +18,7 @@ clean up inconsistent whitespace )
 * by closing [issues][]
 * by reviewing patches
 
-[issues]: https://blues.github.com/note-msp430/issues
+[issues]: https://github.com/blues/note-msp430/issues
 
 ## Submitting an Issue
 
