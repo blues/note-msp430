@@ -6,12 +6,12 @@
 #include "main.h"
 #include "note.h"
 
-// This example avoids uses the "note-c" library in its entirety, for extremely low-memory MCUs.  It is only
+// This example avoids using the "note-c" library in its entirety, for extremely low-memory MCUs.  It is only
 // written for Serial because I2C requires a "serial-over-i2c" protocol that is implemented within the library.
 #if DISABLE_NOTE_C_LIBRARY && !NOTECARD_USE_I2C
 
 // Forwards
-void itoa(int dataIn, char* bffr, int radix);
+void my_itoa(int dataIn, char* bffr, int radix);
 
 // JSON example
 void setup() {
@@ -66,7 +66,7 @@ void loop() {
     request = "\"count\":";
     noteSerialTransmit((uint8_t *)request, strlen(request), false);
     char countstr[20];
-    itoa(eventCounter, countstr, 10);
+    my_itoa(eventCounter, countstr, 10);
     noteSerialTransmit((uint8_t *)countstr, strlen(countstr), false);
 
     // Complete and issue the request
@@ -82,7 +82,7 @@ void loop() {
 }
 
 // int to string
-void itoa(int dataIn, char* bffr, int radix) {
+void my_itoa(int dataIn, char* bffr, int radix) {
     int temp_dataIn;
     temp_dataIn = dataIn;
     int stringLen=1;

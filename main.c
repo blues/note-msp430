@@ -128,7 +128,7 @@ void init_CS(void) {
 
 // Serial port reset procedure, called before any I/O and called again upon I/O error
 #if !NOTECARD_USE_I2C
-void noteSerialReset() {
+bool noteSerialReset() {
 
     // Configure UCA1TXD and UCA1RXD
     GPIO_setAsPeripheralModuleFunctionInputPin(GPIO_PORT_P4, GPIO_PIN2, GPIO_PRIMARY_MODULE_FUNCTION);
@@ -198,12 +198,13 @@ char noteSerialReceive() {
 
 // I2C reset procedure, called before any I/O and called again upon I/O error
 #if NOTECARD_USE_I2C
-void noteI2CReset(uint16_t DevAddress) {
+bool noteI2CReset(uint16_t DevAddress) {
     i2cConfig.i2cClk = CS_getSMCLK();
     GPIO_setAsPeripheralModuleFunctionInputPin( I2C_PORT, I2C_PIN_SCL | I2C_PIN_SDA,
                                                 GPIO_PRIMARY_MODULE_FUNCTION );
     EUSCI_B_I2C_initMaster(EUSCI_B0_BASE, &i2cConfig);
     __bis_SR_register(GIE);
+    return true;
 }
 #endif
 

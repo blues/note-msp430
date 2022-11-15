@@ -1,0 +1,9 @@
+name: 'Compile Examples'
+description: 'Validate examples by compiling with a Dockerized build using CMake'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  entrypoint: 'bash'
+  args:
+    - -c
+    - "rm -rf build && mkdir -p build && cd build && cmake .. && make"

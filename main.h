@@ -19,17 +19,25 @@
 // beneficial in terms of freeing up a serial port.
 //
 
+#ifndef DISABLE_NOTE_C_LIBRARY
 #define DISABLE_NOTE_C_LIBRARY  false
+#endif
 
 // Choose whether to use I2C or SERIAL for the Notecard
 
+#ifndef NOTECARD_USE_I2C
 #define NOTECARD_USE_I2C        false
+#endif
 
 // This is the unique Product Identifier for your device.  This Product ID tells the Notecard what
 // type of device has embedded the Notecard, and by extension which vendor or customer is in charge
 // of "managing" it.  In order to set this value, you must first register with notehub.io and
 // "claim" a unique product ID for your device.  It could be something as simple as as your email
 // address in reverse, such as "com.gmail.smith.lisa.test-device" or "com.outlook.gates.bill.demo"
+
+#ifndef PRODUCT_UID
+#pragma info PRODUCT_UID is not set. You can either set this in the source, or use "hub.set" to configure your Notecard. 
+#endif
 
 #define myProductID "org.coca-cola.soda.vending-machine.v2"
 #define myLiveDemo  true
@@ -39,11 +47,11 @@ void delay(uint32_t ms);
 long unsigned int millis(void);
 void setup(void);
 void loop(void);
-void noteSerialReset(void);
+bool noteSerialReset(void);
 void noteSerialTransmit(uint8_t *text, size_t len, bool flush);
 bool noteSerialAvailable(void);
 char noteSerialReceive(void);
-void noteI2CReset(uint16_t DevAddress);
+bool noteI2CReset(uint16_t DevAddress);
 size_t noteDebugSerialOutput(const char *message);
 const char *noteI2CTransmit(uint16_t DevAddress, uint8_t* pBuffer, uint16_t Size);
 const char *noteI2CReceive(uint16_t DevAddress, uint8_t* pBuffer, uint16_t Size, uint32_t *avail);
