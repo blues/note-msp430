@@ -26,6 +26,8 @@ void setup() {
     // this Product ID.  (see above)
 #ifdef PRODUCT_UID
 #define F_PRODUCT "\"product\":\"" PRODUCT_UID "\","
+#else
+#define F_PRODUCT ""
 #endif
     // This command determines how often the Notecard connects to the service.  If "continuous" the Notecard
     // immediately establishes a session with the service at notehub.io, and keeps it active continuously.

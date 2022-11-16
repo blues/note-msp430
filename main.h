@@ -36,9 +36,10 @@
 // address in reverse, such as "com.gmail.smith.lisa.test-device" or "com.outlook.gates.bill.demo"
 
 #ifndef PRODUCT_UID
-#define PRODUCT_UID ""		// "com.my-company.my-name:my-project"
 #pragma message "PRODUCT_UID is not defined in this example. Please ensure your Notecard has a product identifier set before running this example or define it in code here. More details at https://bit.ly/product-uid"
 #endif
+// #define PRODUCT_UID "com.my-company.my-name:my-project"
+
 
 #define myLiveDemo  true
 
