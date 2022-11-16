@@ -36,10 +36,10 @@
 // address in reverse, such as "com.gmail.smith.lisa.test-device" or "com.outlook.gates.bill.demo"
 
 #ifndef PRODUCT_UID
-#pragma info PRODUCT_UID is not set. You can either set this in the source, or use "hub.set" to configure your Notecard. 
+#define PRODUCT_UID ""		// "com.my-company.my-name:my-project"
+#pragma message "PRODUCT_UID is not defined in this example. Please ensure your Notecard has a product identifier set before running this example or define it in code here. More details at https://bit.ly/product-uid"
 #endif
 
-#define myProductID "org.coca-cola.soda.vending-machine.v2"
 #define myLiveDemo  true
 
 // Externalized

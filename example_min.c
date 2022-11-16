@@ -24,8 +24,9 @@ void setup() {
 
     // This command (required) causes the data to be delivered to the Project on notehub.io that has claimed
     // this Product ID.  (see above)
-#define F_PRODUCT "\"product\":\"" myProductID "\""
-
+#ifdef PRODUCT_UID
+#define F_PRODUCT "\"product\":\"" PRODUCT_UID "\","
+#endif
     // This command determines how often the Notecard connects to the service.  If "continuous" the Notecard
     // immediately establishes a session with the service at notehub.io, and keeps it active continuously.
     // Because of the power requirements of a continuous connection, a battery powered device would instead
@@ -39,10 +40,10 @@ void setup() {
     // Issue the request, telling the Notecard how and how often to access the service.
     // This results in a JSON message to Notecard formatted like:
     //     { "req"     : "hub.set",
-    //       "product" : myProductID,
+    //       "product" : PRODUCT_UID,  // optional
     //       "mode"    : "continuous"
     //     }
-    char *request = "{" F_REQ "," F_PRODUCT "," F_MODE "}\n";
+    char *request = "{" F_REQ "," F_PRODUCT F_MODE "}\n";
     noteSerialTransmit((uint8_t *)request, strlen(request), true);
 
 }
