@@ -159,7 +159,7 @@ bool noteSerialReset() {
 
     // Unused, but included for documentation
     ((void)(serialOverruns));
-
+    return true;
 }
 #endif
 

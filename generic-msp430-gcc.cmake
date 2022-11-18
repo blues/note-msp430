@@ -55,6 +55,7 @@ function(msp430_add_executable_compilation EXECUTABLE)
     target_include_directories(${EXECUTABLE_ELF} PUBLIC "${MSP430_GCC_PATH}/include")
     target_link_directories(${EXECUTABLE_ELF} PUBLIC "${MSP430_GCC_PATH}/include")
     target_link_options(${EXECUTABLE_ELF} PRIVATE -T${MSP430_MCU}.ld)
+	target_compile_options(${EXECUTABLE_ELF} PUBLIC "-Wall")
 	# display size info after compilation
 	add_custom_command(TARGET ${EXECUTABLE} POST_BUILD
 		COMMAND ${MSP430-SIZE} ${EXECUTABLE_ELF})
