@@ -3,7 +3,7 @@
 // copyright holder including that found in the LICENSE file.
 
 #include "main.h"
-
+#include "product.h"
 // This example uses the "note-c" library for JSON and Notecard I/O
 #if !DISABLE_NOTE_C_LIBRARY
 #include "note.h"
@@ -26,10 +26,13 @@ void setup() {
     // request structure using malloc() and initializes its "req" field with the type of request.
     J *req = NoteNewRequest("hub.set");
 
-    // This command (required) causes the data to be delivered to the Project on notehub.io that has claimed
+    // This command causes the data to be delivered to the Project on notehub.io that has claimed
     // this Product ID.  (see above)
-    JAddStringToObject(req, "product", myProductID);
-
+#ifdef PRODUCT_UID
+    if (PRODUCT_UID[0]) {
+        JAddStringToObject(req, "product", PRODUCT_UID);
+    }
+#endif
     // This command determines how often the Notecard connects to the service.  If "continuous" the Notecard
     // immediately establishes a session with the service at notehub.io, and keeps it active continuously.
     // Because of the power requirements of a continuous connection, a battery powered device would instead
@@ -44,7 +47,7 @@ void setup() {
     // Issue the request, telling the Notecard how and how often to access the service.
     // This results in a JSON message to Notecard formatted like:
     //     { "req"     : "hub.set",
-    //       "product" : myProductID,
+    //       "product" : PRODUCT_UID,
     //       "mode"    : "continuous"
     //     }
     // Note that NoteRequest() always uses free() to release the request data structure, and it

@@ -1,0 +1,21 @@
+
+name: note-msp430 CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  validate_examples: # job id
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        id: checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: true
+      - name: Build Examples
+        id: build_examples
+        uses: ./.github/actions/build-examples
