@@ -61,28 +61,38 @@ function(msp430_add_executable_and_dependencies EXECUTABLE)
     target_link_libraries(${EXECUTABLE_ELF} note-c driverlib mul_f5)
 endfunction(msp430_add_executable_and_dependencies)
 
-set(PRODUCT_UID "com.example.product")
 
-# example with i2c - no product UID
-msp430_add_executable_and_dependencies(example_i2c example.c)
-target_compile_definitions(example_i2c.elf PUBLIC NOTECARD_USE_I2C=true DISABLE_NOTE_C_LIBRARY=false)
+# when building in github, set the product ID
+if ("$ENV{CI}" STREQUAL "true")
+    set(PRODUCT_UID "com.example.product")
 
-msp430_add_executable_and_dependencies(example_i2c_product example.c)
-target_compile_definitions(example_i2c_product.elf PUBLIC NOTECARD_USE_I2C=true DISABLE_NOTE_C_LIBRARY=false PRODUCT_UID="${PRODUCT_UID}")
+    msp430_add_executable_and_dependencies(example_i2c_product example.c)
+    target_compile_definitions(example_i2c_product.elf PUBLIC NOTECARD_USE_I2C=true DISABLE_NOTE_C_LIBRARY=false PRODUCT_UID="${PRODUCT_UID}")
 
+    # example with i2c - no product UID
+    msp430_add_executable_and_dependencies(example_i2c example.c)
+    target_compile_definitions(example_i2c.elf PUBLIC NOTECARD_USE_I2C=true DISABLE_NOTE_C_LIBRARY=false)
 
-# example with serial
-msp430_add_executable_and_dependencies(example_serial example.c)
-target_compile_definitions(example_serial.elf PUBLIC NOTECARD_USE_I2C=false DISABLE_NOTE_C_LIBRARY=false)
+    # example with serial
+    msp430_add_executable_and_dependencies(example_serial example.c)
+    target_compile_definitions(example_serial.elf PUBLIC NOTECARD_USE_I2C=false DISABLE_NOTE_C_LIBRARY=false)
 
-# example with serial and product UID
-msp430_add_executable_and_dependencies(example_serial_product example.c)
-target_compile_definitions(example_serial_product.elf PUBLIC NOTECARD_USE_I2C=false DISABLE_NOTE_C_LIBRARY=false PRODUCT_UID="${PRODUCT_UID}")
+    # example with serial and product UID
+    msp430_add_executable_and_dependencies(example_serial_product example.c)
+    target_compile_definitions(example_serial_product.elf PUBLIC NOTECARD_USE_I2C=false DISABLE_NOTE_C_LIBRARY=false PRODUCT_UID="${PRODUCT_UID}")
 
-# minimal example not using note-c
-msp430_add_executable_and_dependencies(example_min example_min.c)
-target_compile_definitions(example_min.elf PUBLIC NOTECARD_USE_I2C=false DISABLE_NOTE_C_LIBRARY=true)
+    # minimal example not using note-c
+    msp430_add_executable_and_dependencies(example_min example_min.c)
+    target_compile_definitions(example_min.elf PUBLIC NOTECARD_USE_I2C=false DISABLE_NOTE_C_LIBRARY=true)
 
-# minimal example not using note-c with product UID
-msp430_add_executable_and_dependencies(example_min_product example_min.c)
-target_compile_definitions(example_min_product.elf PUBLIC NOTECARD_USE_I2C=false DISABLE_NOTE_C_LIBRARY=true PRODUCT_UID="${PRODUCT_UID}")
+    # minimal example not using note-c with product UID
+    msp430_add_executable_and_dependencies(example_min_product example_min.c)
+    target_compile_definitions(example_min_product.elf PUBLIC NOTECARD_USE_I2C=false DISABLE_NOTE_C_LIBRARY=true PRODUCT_UID="${PRODUCT_UID}")
+else()
+    # local development command line build.
+    msp430_add_executable_and_dependencies(example_i2c_product example.c)
+    target_compile_definitions(example_i2c_product.elf PUBLIC)
+
+    msp430_add_executable_and_dependencies(example_min_product example_min.c)
+    target_compile_definitions(example_min_product.elf PUBLIC NOTECARD_USE_I2C=false DISABLE_NOTE_C_LIBRARY=true)
+endif()
