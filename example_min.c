@@ -5,6 +5,7 @@
 #include <string.h>
 #include "main.h"
 #include "note.h"
+#include "product.h"
 
 // This example avoids using the "note-c" library in its entirety, for extremely low-memory MCUs.  It is only
 // written for Serial because I2C requires a "serial-over-i2c" protocol that is implemented within the library.
@@ -22,7 +23,7 @@ void setup() {
     // The request field sets up service operation parameters
 #define F_REQ "\"req\":\"hub.set\""
 
-    // This command (required) causes the data to be delivered to the Project on notehub.io that has claimed
+    // This command causes the data to be delivered to the Project on notehub.io that has claimed
     // this Product ID.  (see above)
 #ifdef PRODUCT_UID
 #define F_PRODUCT "\"product\":\"" PRODUCT_UID "\","

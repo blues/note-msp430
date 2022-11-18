@@ -3,7 +3,7 @@
 // copyright holder including that found in the LICENSE file.
 
 #include "main.h"
-
+#include "product.h"
 // This example uses the "note-c" library for JSON and Notecard I/O
 #if !DISABLE_NOTE_C_LIBRARY
 #include "note.h"
