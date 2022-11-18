@@ -14,29 +14,8 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 
 add_compile_options(-Werror -ffunction-sections -fdata-sections -mmcu=${MSP430_MCU} -DF_CPU=${MSP430_MCU_FREQ})
 
-
 # note-c
-set(NOTE_C ${CMAKE_CURRENT_LIST_DIR}/note-c)
-add_library(note-c OBJECT
-    ${NOTE_C}/n_atof.c
-    ${NOTE_C}/n_b64.c
-    ${NOTE_C}/n_cjson.c
-    ${NOTE_C}/n_cjson_helpers.c
-    ${NOTE_C}/n_const.c
-    ${NOTE_C}/n_ftoa.c
-    ${NOTE_C}/n_helpers.c
-    ${NOTE_C}/n_hooks.c
-    ${NOTE_C}/n_i2c.c
-# commented-out files present in newer versions of note-c
-#    ${NOTE_C}/n_md5.c
-    ${NOTE_C}/n_request.c
-    ${NOTE_C}/n_serial.c
-    ${NOTE_C}/n_str.c
-#    ${NOTE_C}/n_ua.c
-)
-target_include_directories(note-c
-    PUBLIC ${NOTE_C}
-)
+include ("${CMAKE_CURRENT_LIST_DIR}/note-c/note-c.cmake")
 
 # driverlib
 cmake_path(SET DRIVERLIB NORMALIZE "${CMAKE_CURRENT_LIST_DIR}/driverlib/MSP430FR2xx_4xx")
