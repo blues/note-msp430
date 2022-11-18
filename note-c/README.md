@@ -1,6 +1,6 @@
 # note-c
 
-The note-arduino Arduino library for communicating with the
+The note-c C library for communicating with the
 [Blues Wireless][blues] Notecard via serial or I²C.
 
 This library allows you to control a Notecard by writing a C
@@ -25,9 +25,9 @@ For details on contributions we accept and the process for contributing, see our
 
 For additional Notecard SDKs and Libraries, see:
 
-* [note-arduino](note-arduino) for Arduino support
-* [note-python](note-python) for Python
-* [note-go](note-go) for Go
+* [note-arduino][note-arduino] for Arduino support
+* [note-python][note-python] for Python
+* [note-go][note-go] for Go
 
 ## To learn more about Blues Wireless, the Notecard and Notehub, see:
 
