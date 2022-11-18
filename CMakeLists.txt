@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.0)
 
 set(CMAKE_TOOLCHAIN_FILE "${CMAKE_SOURCE_DIR}/generic-msp430-gcc.cmake")
 
@@ -11,7 +11,6 @@ set(MSP430_MCU_FREQ 24000000UL)
 
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
-# set(CMAKE_C_EXTENSIONS ON)
 
 add_compile_options(-Werror -ffunction-sections -fdata-sections -mmcu=${MSP430_MCU} -DF_CPU=${MSP430_MCU_FREQ})
 
@@ -28,6 +27,7 @@ add_library(note-c OBJECT
     ${NOTE_C}/n_helpers.c
     ${NOTE_C}/n_hooks.c
     ${NOTE_C}/n_i2c.c
+# commented-out files present in newer versions of note-c
 #    ${NOTE_C}/n_md5.c
     ${NOTE_C}/n_request.c
     ${NOTE_C}/n_serial.c
@@ -54,10 +54,9 @@ add_library(driverlib OBJECT
 target_include_directories(driverlib PUBLIC "${DRIVERLIB}" "${MSP430_GCC_PATH}/include")
 
 function(msp430_add_executable_and_dependencies EXECUTABLE)
-	set(EXECUTABLE_ELF "${EXECUTABLE}.elf")
+    set(EXECUTABLE_ELF "${EXECUTABLE}.elf")
     msp430_add_executable(${EXECUTABLE} main.c ${ARGN})
     # include the source root for main.h
-    target_include_directories(${EXECUTABLE_ELF} PUBLIC "./")
     target_link_libraries(${EXECUTABLE_ELF} note-c driverlib mul_f5)
 endfunction(msp430_add_executable_and_dependencies)
 

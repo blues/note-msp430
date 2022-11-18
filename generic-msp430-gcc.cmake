@@ -8,10 +8,6 @@ cmake_minimum_required(VERSION 3.20)
 # MSP430_MCU : mcu type 
 # MSP430_MCU_FREQ : clock frequency (defines F_CPU)
 
-
-#generic avr flags
-
-set(MSP430_CFLAGS CACHE STRING "MSP430 compilation flags")
 set(MSP430_LFLAGS "-Wl,--relax,--gc-sections" CACHE STRING "MSP430 link flags")
 
 #find toolchain programs
@@ -41,7 +37,7 @@ if(NOT CMAKE_BUILD_TYPE)
 endif(NOT CMAKE_BUILD_TYPE)
 
 function(msp430_add_executable_compilation EXECUTABLE)
-	
+
 	set(EXECUTABLE_ELF "${EXECUTABLE}.elf")
 
 	# main target for the executable depends of elf
@@ -50,11 +46,11 @@ function(msp430_add_executable_compilation EXECUTABLE)
 	# compile and link elf file
 	add_executable(${EXECUTABLE_ELF} ${ARGN})
 
-    set_target_properties( PROPERTIES
+	set_target_properties( PROPERTIES
 		LINK_FLAGS "-mmcu=${MSP430_MCU} ${MSP430_LFLAGS}")
-    target_include_directories(${EXECUTABLE_ELF} PUBLIC "${MSP430_GCC_PATH}/include")
-    target_link_directories(${EXECUTABLE_ELF} PUBLIC "${MSP430_GCC_PATH}/include")
-    target_link_options(${EXECUTABLE_ELF} PRIVATE -T${MSP430_MCU}.ld)
+	target_include_directories(${EXECUTABLE_ELF} PUBLIC "${MSP430_GCC_PATH}/include")
+	target_link_directories(${EXECUTABLE_ELF} PUBLIC "${MSP430_GCC_PATH}/include")
+	target_link_options(${EXECUTABLE_ELF} PRIVATE -T${MSP430_MCU}.ld)
 	target_compile_options(${EXECUTABLE_ELF} PUBLIC "-Wall")
 	# display size info after compilation
 	add_custom_command(TARGET ${EXECUTABLE} POST_BUILD
@@ -62,7 +58,7 @@ function(msp430_add_executable_compilation EXECUTABLE)
 endfunction(msp430_add_executable_compilation)
 
 function(msp430_add_executable_upload ${EXECUTABLE})
-	add_custom_target(upload_${EXECUTABLE} 
+	add_custom_target(upload_${EXECUTABLE}
 		COMMAND ${MSPDEBUG} -q rf2500 "prog ${EXECUTABLE}.elf"
 		DEPENDS ${EXECUTABLE})
 endfunction(msp430_add_executable_upload)
